@@ -11,6 +11,7 @@ import numpy as np
 from einops import rearrange, repeat, reduce
 
 from models.encoder import CoSTEncoder
+from models.lstm_encoder import CoSTEncoder
 from utils import take_per_row, split_with_nan, centerize_vary_length_series, torch_pad_nan
 
 
@@ -143,6 +144,7 @@ class CoSTModel(nn.Module):
         rand_idx = np.random.randint(0, x_q.shape[1])
 
         q_t, q_s = self.encoder_q(x_q)
+        #rand_idx = np.random.randint(0, q_t.shape[1])
         if q_t is not None:
             q_t = F.normalize(self.head_q(q_t[:, rand_idx]), dim=-1)
 

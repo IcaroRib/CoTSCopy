@@ -1,0 +1,1238 @@
+created virtual environment CPython3.8.10.final.0-64 in 11419ms
+  creator CPython3Posix(dest=/localscratch/melque.36577440.0/melque, clear=False, global=False)
+  seeder FromAppData(download=False, pip=latest, setuptools=latest, wheel=latest, via=copy, app_data_dir=/home/melque/.local/share/virtualenv/seed-app-data/v1.0.1)
+  activators BashActivator,CShellActivator,FishActivator,PowerShellActivator,PythonActivator,XonshActivator
+Ignoring pip: markers 'python_version < "3"' don't match your environment
+Looking in links: /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo/avx512, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo/avx2, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo/generic, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/pip-23.0+computecanada-py3-none-any.whl
+Installing collected packages: pip
+  Attempting uninstall: pip
+    Found existing installation: pip 20.0.2
+    Uninstalling pip-20.0.2:
+      Successfully uninstalled pip-20.0.2
+Successfully installed pip-23.0+computecanada
+Looking in links: /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo/avx512, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo/avx2, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo/generic, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo/generic/scipy-1.7.1+computecanada-cp38-cp38-linux_x86_64.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/torch-1.9.1+computecanada-cp38-cp38-linux_x86_64.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo/generic/numpy-1.22.2+computecanada-cp38-cp38-linux_x86_64.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/pandas-1.0.3+computecanada-cp38-cp38-linux_x86_64.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo/generic/scikit_learn-0.24.1+computecanada-cp38-cp38-linux_x86_64.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/einops-0.6.0+computecanada-py3-none-any.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/typing_extensions-4.5.0+computecanada-py3-none-any.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/python_dateutil-2.8.2+computecanada-py2.py3-none-any.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/pytz-2023.3+computecanada-py2.py3-none-any.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/joblib-1.2.0+computecanada-py3-none-any.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/threadpoolctl-3.1.0+computecanada-py3-none-any.whl
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/six-1.16.0+computecanada-py2.py3-none-any.whl
+Installing collected packages: pytz, typing-extensions, threadpoolctl, six, numpy, joblib, einops, torch, scipy, python-dateutil, scikit_learn, pandas
+Successfully installed einops-0.6.0+computecanada joblib-1.2.0+computecanada numpy-1.22.2+computecanada pandas-1.0.3+computecanada python-dateutil-2.8.2+computecanada pytz-2023.3+computecanada scikit_learn-0.24.1+computecanada scipy-1.7.1+computecanada six-1.16.0+computecanada threadpoolctl-3.1.0+computecanada torch-1.9.1+computecanada typing-extensions-4.5.0+computecanada
+Dataset: electricity
+Arguments: Namespace(alpha=0.0005, archive='forecast_csv', batch_size=8, dataset='electricity', epochs=None, eval=True, gpu=0, iters=None, kernels=[1, 2, 4, 8, 16, 32, 64, 128], lr=0.001, max_threads=None, max_train_length=3000, repr_dims=320, run_name='result', save_every=None, seed=None)
+tensor(0.3313, device='cuda:0', grad_fn=<AddBackward0>)
+0
+tensor(1.5239, device='cuda:0', grad_fn=<AddBackward0>)
+1
+tensor(2.5065, device='cuda:0', grad_fn=<AddBackward0>)
+2
+tensor(2.7311, device='cuda:0', grad_fn=<AddBackward0>)
+3
+tensor(2.5786, device='cuda:0', grad_fn=<AddBackward0>)
+4
+tensor(3.0435, device='cuda:0', grad_fn=<AddBackward0>)
+5
+tensor(3.2671, device='cuda:0', grad_fn=<AddBackward0>)
+6
+tensor(3.4249, device='cuda:0', grad_fn=<AddBackward0>)
+7
+tensor(3.6113, device='cuda:0', grad_fn=<AddBackward0>)
+8
+tensor(4.3037, device='cuda:0', grad_fn=<AddBackward0>)
+9
+tensor(3.5773, device='cuda:0', grad_fn=<AddBackward0>)
+10
+tensor(3.6997, device='cuda:0', grad_fn=<AddBackward0>)
+11
+tensor(3.4056, device='cuda:0', grad_fn=<AddBackward0>)
+12
+tensor(3.1554, device='cuda:0', grad_fn=<AddBackward0>)
+13
+tensor(3.3330, device='cuda:0', grad_fn=<AddBackward0>)
+14
+tensor(3.8127, device='cuda:0', grad_fn=<AddBackward0>)
+15
+tensor(4.2601, device='cuda:0', grad_fn=<AddBackward0>)
+16
+tensor(4.1595, device='cuda:0', grad_fn=<AddBackward0>)
+17
+tensor(3.9731, device='cuda:0', grad_fn=<AddBackward0>)
+18
+tensor(3.8162, device='cuda:0', grad_fn=<AddBackward0>)
+19
+tensor(4.3014, device='cuda:0', grad_fn=<AddBackward0>)
+20
+tensor(3.4706, device='cuda:0', grad_fn=<AddBackward0>)
+21
+tensor(3.5982, device='cuda:0', grad_fn=<AddBackward0>)
+22
+tensor(3.3250, device='cuda:0', grad_fn=<AddBackward0>)
+23
+tensor(3.4548, device='cuda:0', grad_fn=<AddBackward0>)
+24
+tensor(4.2605, device='cuda:0', grad_fn=<AddBackward0>)
+25
+tensor(4.1759, device='cuda:0', grad_fn=<AddBackward0>)
+26
+tensor(3.7609, device='cuda:0', grad_fn=<AddBackward0>)
+27
+tensor(3.8751, device='cuda:0', grad_fn=<AddBackward0>)
+28
+tensor(3.5344, device='cuda:0', grad_fn=<AddBackward0>)
+29
+tensor(4.0876, device='cuda:0', grad_fn=<AddBackward0>)
+30
+tensor(3.6054, device='cuda:0', grad_fn=<AddBackward0>)
+31
+tensor(3.8153, device='cuda:0', grad_fn=<AddBackward0>)
+32
+tensor(4.0922, device='cuda:0', grad_fn=<AddBackward0>)
+33
+tensor(3.9394, device='cuda:0', grad_fn=<AddBackward0>)
+34
+tensor(3.9382, device='cuda:0', grad_fn=<AddBackward0>)
+35
+tensor(4.2236, device='cuda:0', grad_fn=<AddBackward0>)
+36
+tensor(3.0658, device='cuda:0', grad_fn=<AddBackward0>)
+37
+tensor(3.4306, device='cuda:0', grad_fn=<AddBackward0>)
+38
+tensor(3.9937, device='cuda:0', grad_fn=<AddBackward0>)
+39
+tensor(3.9406, device='cuda:0', grad_fn=<AddBackward0>)
+40
+tensor(3.3559, device='cuda:0', grad_fn=<AddBackward0>)
+41
+tensor(3.8327, device='cuda:0', grad_fn=<AddBackward0>)
+42
+tensor(3.4220, device='cuda:0', grad_fn=<AddBackward0>)
+43
+tensor(3.8130, device='cuda:0', grad_fn=<AddBackward0>)
+44
+tensor(3.6343, device='cuda:0', grad_fn=<AddBackward0>)
+45
+tensor(3.6118, device='cuda:0', grad_fn=<AddBackward0>)
+46
+tensor(3.4915, device='cuda:0', grad_fn=<AddBackward0>)
+47
+tensor(4.0686, device='cuda:0', grad_fn=<AddBackward0>)
+48
+tensor(4.0287, device='cuda:0', grad_fn=<AddBackward0>)
+49
+tensor(3.5366, device='cuda:0', grad_fn=<AddBackward0>)
+50
+tensor(3.9617, device='cuda:0', grad_fn=<AddBackward0>)
+51
+tensor(3.6232, device='cuda:0', grad_fn=<AddBackward0>)
+52
+tensor(3.6177, device='cuda:0', grad_fn=<AddBackward0>)
+53
+tensor(3.8350, device='cuda:0', grad_fn=<AddBackward0>)
+54
+tensor(4.1262, device='cuda:0', grad_fn=<AddBackward0>)
+55
+tensor(3.7801, device='cuda:0', grad_fn=<AddBackward0>)
+56
+tensor(3.3963, device='cuda:0', grad_fn=<AddBackward0>)
+57
+tensor(3.3336, device='cuda:0', grad_fn=<AddBackward0>)
+58
+tensor(3.7082, device='cuda:0', grad_fn=<AddBackward0>)
+59
+tensor(3.7149, device='cuda:0', grad_fn=<AddBackward0>)
+60
+tensor(3.8182, device='cuda:0', grad_fn=<AddBackward0>)
+61
+tensor(3.3702, device='cuda:0', grad_fn=<AddBackward0>)
+62
+tensor(3.2782, device='cuda:0', grad_fn=<AddBackward0>)
+63
+tensor(3.6223, device='cuda:0', grad_fn=<AddBackward0>)
+64
+tensor(3.5796, device='cuda:0', grad_fn=<AddBackward0>)
+65
+tensor(2.8384, device='cuda:0', grad_fn=<AddBackward0>)
+66
+tensor(3.5539, device='cuda:0', grad_fn=<AddBackward0>)
+67
+tensor(2.7639, device='cuda:0', grad_fn=<AddBackward0>)
+68
+tensor(3.2674, device='cuda:0', grad_fn=<AddBackward0>)
+69
+tensor(3.4027, device='cuda:0', grad_fn=<AddBackward0>)
+70
+tensor(2.8542, device='cuda:0', grad_fn=<AddBackward0>)
+71
+tensor(3.8515, device='cuda:0', grad_fn=<AddBackward0>)
+72
+tensor(2.8512, device='cuda:0', grad_fn=<AddBackward0>)
+73
+tensor(2.8188, device='cuda:0', grad_fn=<AddBackward0>)
+74
+tensor(3.3589, device='cuda:0', grad_fn=<AddBackward0>)
+75
+tensor(2.6612, device='cuda:0', grad_fn=<AddBackward0>)
+76
+tensor(3.0981, device='cuda:0', grad_fn=<AddBackward0>)
+77
+tensor(3.0082, device='cuda:0', grad_fn=<AddBackward0>)
+78
+tensor(2.6777, device='cuda:0', grad_fn=<AddBackward0>)
+79
+tensor(3.1127, device='cuda:0', grad_fn=<AddBackward0>)
+80
+tensor(3.5636, device='cuda:0', grad_fn=<AddBackward0>)
+81
+tensor(3.1986, device='cuda:0', grad_fn=<AddBackward0>)
+82
+tensor(4.0901, device='cuda:0', grad_fn=<AddBackward0>)
+83
+tensor(3.3412, device='cuda:0', grad_fn=<AddBackward0>)
+84
+tensor(3.0281, device='cuda:0', grad_fn=<AddBackward0>)
+85
+tensor(3.3955, device='cuda:0', grad_fn=<AddBackward0>)
+86
+tensor(3.1681, device='cuda:0', grad_fn=<AddBackward0>)
+87
+tensor(3.3229, device='cuda:0', grad_fn=<AddBackward0>)
+88
+tensor(2.9139, device='cuda:0', grad_fn=<AddBackward0>)
+89
+tensor(3.2211, device='cuda:0', grad_fn=<AddBackward0>)
+90
+tensor(3.4284, device='cuda:0', grad_fn=<AddBackward0>)
+91
+tensor(2.4154, device='cuda:0', grad_fn=<AddBackward0>)
+92
+tensor(2.6272, device='cuda:0', grad_fn=<AddBackward0>)
+93
+tensor(2.9139, device='cuda:0', grad_fn=<AddBackward0>)
+94
+tensor(2.9828, device='cuda:0', grad_fn=<AddBackward0>)
+95
+tensor(3.3824, device='cuda:0', grad_fn=<AddBackward0>)
+96
+tensor(2.9970, device='cuda:0', grad_fn=<AddBackward0>)
+97
+tensor(2.9163, device='cuda:0', grad_fn=<AddBackward0>)
+98
+tensor(2.8596, device='cuda:0', grad_fn=<AddBackward0>)
+99
+tensor(3.1063, device='cuda:0', grad_fn=<AddBackward0>)
+100
+tensor(3.2400, device='cuda:0', grad_fn=<AddBackward0>)
+101
+tensor(2.6253, device='cuda:0', grad_fn=<AddBackward0>)
+102
+tensor(2.2872, device='cuda:0', grad_fn=<AddBackward0>)
+103
+tensor(3.2267, device='cuda:0', grad_fn=<AddBackward0>)
+104
+tensor(3.6892, device='cuda:0', grad_fn=<AddBackward0>)
+105
+tensor(3.4764, device='cuda:0', grad_fn=<AddBackward0>)
+106
+tensor(3.4733, device='cuda:0', grad_fn=<AddBackward0>)
+107
+tensor(3.0084, device='cuda:0', grad_fn=<AddBackward0>)
+108
+tensor(2.8322, device='cuda:0', grad_fn=<AddBackward0>)
+109
+tensor(2.6859, device='cuda:0', grad_fn=<AddBackward0>)
+110
+tensor(2.6855, device='cuda:0', grad_fn=<AddBackward0>)
+111
+tensor(2.6595, device='cuda:0', grad_fn=<AddBackward0>)
+112
+tensor(3.2911, device='cuda:0', grad_fn=<AddBackward0>)
+113
+tensor(3.1485, device='cuda:0', grad_fn=<AddBackward0>)
+114
+tensor(2.4414, device='cuda:0', grad_fn=<AddBackward0>)
+115
+tensor(3.5002, device='cuda:0', grad_fn=<AddBackward0>)
+116
+tensor(3.0069, device='cuda:0', grad_fn=<AddBackward0>)
+117
+tensor(2.8261, device='cuda:0', grad_fn=<AddBackward0>)
+118
+tensor(3.3839, device='cuda:0', grad_fn=<AddBackward0>)
+119
+tensor(3.2836, device='cuda:0', grad_fn=<AddBackward0>)
+120
+tensor(2.7045, device='cuda:0', grad_fn=<AddBackward0>)
+121
+tensor(3.4464, device='cuda:0', grad_fn=<AddBackward0>)
+122
+tensor(2.9733, device='cuda:0', grad_fn=<AddBackward0>)
+123
+tensor(2.8831, device='cuda:0', grad_fn=<AddBackward0>)
+124
+tensor(3.1325, device='cuda:0', grad_fn=<AddBackward0>)
+125
+tensor(2.9655, device='cuda:0', grad_fn=<AddBackward0>)
+126
+tensor(2.2895, device='cuda:0', grad_fn=<AddBackward0>)
+127
+tensor(3.5405, device='cuda:0', grad_fn=<AddBackward0>)
+128
+tensor(3.1310, device='cuda:0', grad_fn=<AddBackward0>)
+129
+tensor(3.3262, device='cuda:0', grad_fn=<AddBackward0>)
+130
+tensor(2.8699, device='cuda:0', grad_fn=<AddBackward0>)
+131
+tensor(3.3411, device='cuda:0', grad_fn=<AddBackward0>)
+132
+tensor(3.5921, device='cuda:0', grad_fn=<AddBackward0>)
+133
+tensor(2.2431, device='cuda:0', grad_fn=<AddBackward0>)
+134
+tensor(3.3671, device='cuda:0', grad_fn=<AddBackward0>)
+135
+tensor(2.3485, device='cuda:0', grad_fn=<AddBackward0>)
+136
+tensor(2.9572, device='cuda:0', grad_fn=<AddBackward0>)
+137
+tensor(2.4984, device='cuda:0', grad_fn=<AddBackward0>)
+138
+tensor(2.7317, device='cuda:0', grad_fn=<AddBackward0>)
+139
+tensor(2.6749, device='cuda:0', grad_fn=<AddBackward0>)
+140
+tensor(2.6282, device='cuda:0', grad_fn=<AddBackward0>)
+141
+tensor(3.0740, device='cuda:0', grad_fn=<AddBackward0>)
+142
+tensor(3.4364, device='cuda:0', grad_fn=<AddBackward0>)
+143
+tensor(2.8302, device='cuda:0', grad_fn=<AddBackward0>)
+144
+tensor(2.2987, device='cuda:0', grad_fn=<AddBackward0>)
+145
+tensor(2.8668, device='cuda:0', grad_fn=<AddBackward0>)
+146
+tensor(2.8173, device='cuda:0', grad_fn=<AddBackward0>)
+147
+tensor(2.6924, device='cuda:0', grad_fn=<AddBackward0>)
+148
+tensor(2.7515, device='cuda:0', grad_fn=<AddBackward0>)
+149
+tensor(2.4259, device='cuda:0', grad_fn=<AddBackward0>)
+150
+tensor(2.6866, device='cuda:0', grad_fn=<AddBackward0>)
+151
+tensor(2.6295, device='cuda:0', grad_fn=<AddBackward0>)
+152
+tensor(2.8034, device='cuda:0', grad_fn=<AddBackward0>)
+153
+tensor(2.8853, device='cuda:0', grad_fn=<AddBackward0>)
+154
+tensor(3.5655, device='cuda:0', grad_fn=<AddBackward0>)
+155
+tensor(3.3133, device='cuda:0', grad_fn=<AddBackward0>)
+156
+tensor(2.6976, device='cuda:0', grad_fn=<AddBackward0>)
+157
+tensor(3.2207, device='cuda:0', grad_fn=<AddBackward0>)
+158
+tensor(2.4266, device='cuda:0', grad_fn=<AddBackward0>)
+159
+tensor(2.8059, device='cuda:0', grad_fn=<AddBackward0>)
+160
+tensor(2.8041, device='cuda:0', grad_fn=<AddBackward0>)
+161
+tensor(2.5334, device='cuda:0', grad_fn=<AddBackward0>)
+162
+tensor(2.0076, device='cuda:0', grad_fn=<AddBackward0>)
+163
+tensor(3.4942, device='cuda:0', grad_fn=<AddBackward0>)
+164
+tensor(2.4694, device='cuda:0', grad_fn=<AddBackward0>)
+165
+tensor(2.4685, device='cuda:0', grad_fn=<AddBackward0>)
+166
+tensor(2.9338, device='cuda:0', grad_fn=<AddBackward0>)
+167
+tensor(3.2581, device='cuda:0', grad_fn=<AddBackward0>)
+168
+tensor(2.0931, device='cuda:0', grad_fn=<AddBackward0>)
+169
+tensor(1.8774, device='cuda:0', grad_fn=<AddBackward0>)
+170
+tensor(2.2579, device='cuda:0', grad_fn=<AddBackward0>)
+171
+tensor(2.8126, device='cuda:0', grad_fn=<AddBackward0>)
+172
+tensor(2.4464, device='cuda:0', grad_fn=<AddBackward0>)
+173
+tensor(3.2825, device='cuda:0', grad_fn=<AddBackward0>)
+174
+tensor(2.4546, device='cuda:0', grad_fn=<AddBackward0>)
+175
+tensor(3.0745, device='cuda:0', grad_fn=<AddBackward0>)
+176
+tensor(2.6493, device='cuda:0', grad_fn=<AddBackward0>)
+177
+tensor(2.7088, device='cuda:0', grad_fn=<AddBackward0>)
+178
+tensor(2.8034, device='cuda:0', grad_fn=<AddBackward0>)
+179
+tensor(2.4186, device='cuda:0', grad_fn=<AddBackward0>)
+180
+tensor(2.5301, device='cuda:0', grad_fn=<AddBackward0>)
+181
+tensor(3.3491, device='cuda:0', grad_fn=<AddBackward0>)
+182
+tensor(2.4236, device='cuda:0', grad_fn=<AddBackward0>)
+183
+tensor(2.4390, device='cuda:0', grad_fn=<AddBackward0>)
+184
+tensor(3.1274, device='cuda:0', grad_fn=<AddBackward0>)
+185
+tensor(2.5632, device='cuda:0', grad_fn=<AddBackward0>)
+186
+tensor(2.7017, device='cuda:0', grad_fn=<AddBackward0>)
+187
+tensor(3.6205, device='cuda:0', grad_fn=<AddBackward0>)
+188
+tensor(2.2584, device='cuda:0', grad_fn=<AddBackward0>)
+189
+tensor(2.6879, device='cuda:0', grad_fn=<AddBackward0>)
+190
+tensor(2.6763, device='cuda:0', grad_fn=<AddBackward0>)
+191
+tensor(3.2981, device='cuda:0', grad_fn=<AddBackward0>)
+192
+tensor(2.6597, device='cuda:0', grad_fn=<AddBackward0>)
+193
+tensor(2.7645, device='cuda:0', grad_fn=<AddBackward0>)
+194
+tensor(2.5011, device='cuda:0', grad_fn=<AddBackward0>)
+195
+tensor(2.4543, device='cuda:0', grad_fn=<AddBackward0>)
+196
+tensor(2.5330, device='cuda:0', grad_fn=<AddBackward0>)
+197
+tensor(2.3166, device='cuda:0', grad_fn=<AddBackward0>)
+198
+tensor(2.0479, device='cuda:0', grad_fn=<AddBackward0>)
+199
+Epoch #0: loss=3.1269969038665293
+tensor(2.4220, device='cuda:0', grad_fn=<AddBackward0>)
+200
+tensor(2.5384, device='cuda:0', grad_fn=<AddBackward0>)
+201
+tensor(2.5014, device='cuda:0', grad_fn=<AddBackward0>)
+202
+tensor(2.5507, device='cuda:0', grad_fn=<AddBackward0>)
+203
+tensor(2.4619, device='cuda:0', grad_fn=<AddBackward0>)
+204
+tensor(2.4688, device='cuda:0', grad_fn=<AddBackward0>)
+205
+tensor(1.8717, device='cuda:0', grad_fn=<AddBackward0>)
+206
+tensor(1.8955, device='cuda:0', grad_fn=<AddBackward0>)
+207
+tensor(3.0500, device='cuda:0', grad_fn=<AddBackward0>)
+208
+tensor(2.2478, device='cuda:0', grad_fn=<AddBackward0>)
+209
+tensor(2.6642, device='cuda:0', grad_fn=<AddBackward0>)
+210
+tensor(2.6615, device='cuda:0', grad_fn=<AddBackward0>)
+211
+tensor(2.4592, device='cuda:0', grad_fn=<AddBackward0>)
+212
+tensor(2.7813, device='cuda:0', grad_fn=<AddBackward0>)
+213
+tensor(2.6349, device='cuda:0', grad_fn=<AddBackward0>)
+214
+tensor(2.3828, device='cuda:0', grad_fn=<AddBackward0>)
+215
+tensor(2.4665, device='cuda:0', grad_fn=<AddBackward0>)
+216
+tensor(3.6110, device='cuda:0', grad_fn=<AddBackward0>)
+217
+tensor(1.7944, device='cuda:0', grad_fn=<AddBackward0>)
+218
+tensor(1.8669, device='cuda:0', grad_fn=<AddBackward0>)
+219
+tensor(2.3597, device='cuda:0', grad_fn=<AddBackward0>)
+220
+tensor(3.2794, device='cuda:0', grad_fn=<AddBackward0>)
+221
+tensor(2.2046, device='cuda:0', grad_fn=<AddBackward0>)
+222
+tensor(3.5011, device='cuda:0', grad_fn=<AddBackward0>)
+223
+tensor(2.2852, device='cuda:0', grad_fn=<AddBackward0>)
+224
+tensor(1.5722, device='cuda:0', grad_fn=<AddBackward0>)
+225
+tensor(2.5384, device='cuda:0', grad_fn=<AddBackward0>)
+226
+tensor(1.7264, device='cuda:0', grad_fn=<AddBackward0>)
+227
+tensor(1.8165, device='cuda:0', grad_fn=<AddBackward0>)
+228
+tensor(2.2378, device='cuda:0', grad_fn=<AddBackward0>)
+229
+tensor(1.7987, device='cuda:0', grad_fn=<AddBackward0>)
+230
+tensor(2.1009, device='cuda:0', grad_fn=<AddBackward0>)
+231
+tensor(1.9282, device='cuda:0', grad_fn=<AddBackward0>)
+232
+tensor(2.3276, device='cuda:0', grad_fn=<AddBackward0>)
+233
+tensor(1.8597, device='cuda:0', grad_fn=<AddBackward0>)
+234
+tensor(2.6751, device='cuda:0', grad_fn=<AddBackward0>)
+235
+tensor(1.8601, device='cuda:0', grad_fn=<AddBackward0>)
+236
+tensor(2.2812, device='cuda:0', grad_fn=<AddBackward0>)
+237
+tensor(2.5279, device='cuda:0', grad_fn=<AddBackward0>)
+238
+tensor(1.5384, device='cuda:0', grad_fn=<AddBackward0>)
+239
+tensor(2.0831, device='cuda:0', grad_fn=<AddBackward0>)
+240
+tensor(2.3304, device='cuda:0', grad_fn=<AddBackward0>)
+241
+tensor(1.8373, device='cuda:0', grad_fn=<AddBackward0>)
+242
+tensor(1.8791, device='cuda:0', grad_fn=<AddBackward0>)
+243
+tensor(2.0186, device='cuda:0', grad_fn=<AddBackward0>)
+244
+tensor(2.1428, device='cuda:0', grad_fn=<AddBackward0>)
+245
+tensor(2.3478, device='cuda:0', grad_fn=<AddBackward0>)
+246
+tensor(1.6818, device='cuda:0', grad_fn=<AddBackward0>)
+247
+tensor(2.3097, device='cuda:0', grad_fn=<AddBackward0>)
+248
+tensor(2.3932, device='cuda:0', grad_fn=<AddBackward0>)
+249
+tensor(2.9605, device='cuda:0', grad_fn=<AddBackward0>)
+250
+tensor(2.4092, device='cuda:0', grad_fn=<AddBackward0>)
+251
+tensor(2.6094, device='cuda:0', grad_fn=<AddBackward0>)
+252
+tensor(2.4936, device='cuda:0', grad_fn=<AddBackward0>)
+253
+tensor(1.6492, device='cuda:0', grad_fn=<AddBackward0>)
+254
+tensor(2.0018, device='cuda:0', grad_fn=<AddBackward0>)
+255
+tensor(2.6498, device='cuda:0', grad_fn=<AddBackward0>)
+256
+tensor(3.0907, device='cuda:0', grad_fn=<AddBackward0>)
+257
+tensor(1.6601, device='cuda:0', grad_fn=<AddBackward0>)
+258
+tensor(2.0995, device='cuda:0', grad_fn=<AddBackward0>)
+259
+tensor(2.3277, device='cuda:0', grad_fn=<AddBackward0>)
+260
+tensor(2.3419, device='cuda:0', grad_fn=<AddBackward0>)
+261
+tensor(1.8161, device='cuda:0', grad_fn=<AddBackward0>)
+262
+tensor(1.7211, device='cuda:0', grad_fn=<AddBackward0>)
+263
+tensor(2.6124, device='cuda:0', grad_fn=<AddBackward0>)
+264
+tensor(1.7473, device='cuda:0', grad_fn=<AddBackward0>)
+265
+tensor(2.3283, device='cuda:0', grad_fn=<AddBackward0>)
+266
+tensor(2.0552, device='cuda:0', grad_fn=<AddBackward0>)
+267
+tensor(2.2374, device='cuda:0', grad_fn=<AddBackward0>)
+268
+tensor(2.3957, device='cuda:0', grad_fn=<AddBackward0>)
+269
+tensor(2.0217, device='cuda:0', grad_fn=<AddBackward0>)
+270
+tensor(2.5253, device='cuda:0', grad_fn=<AddBackward0>)
+271
+tensor(1.7048, device='cuda:0', grad_fn=<AddBackward0>)
+272
+tensor(2.1323, device='cuda:0', grad_fn=<AddBackward0>)
+273
+tensor(2.1386, device='cuda:0', grad_fn=<AddBackward0>)
+274
+tensor(1.7059, device='cuda:0', grad_fn=<AddBackward0>)
+275
+tensor(1.8476, device='cuda:0', grad_fn=<AddBackward0>)
+276
+tensor(1.9130, device='cuda:0', grad_fn=<AddBackward0>)
+277
+tensor(1.9178, device='cuda:0', grad_fn=<AddBackward0>)
+278
+tensor(2.3679, device='cuda:0', grad_fn=<AddBackward0>)
+279
+tensor(1.6610, device='cuda:0', grad_fn=<AddBackward0>)
+280
+tensor(1.3721, device='cuda:0', grad_fn=<AddBackward0>)
+281
+tensor(2.3245, device='cuda:0', grad_fn=<AddBackward0>)
+282
+tensor(2.1553, device='cuda:0', grad_fn=<AddBackward0>)
+283
+tensor(1.8850, device='cuda:0', grad_fn=<AddBackward0>)
+284
+tensor(1.4641, device='cuda:0', grad_fn=<AddBackward0>)
+285
+tensor(1.8200, device='cuda:0', grad_fn=<AddBackward0>)
+286
+tensor(1.8643, device='cuda:0', grad_fn=<AddBackward0>)
+287
+tensor(1.8914, device='cuda:0', grad_fn=<AddBackward0>)
+288
+tensor(1.6916, device='cuda:0', grad_fn=<AddBackward0>)
+289
+tensor(2.2685, device='cuda:0', grad_fn=<AddBackward0>)
+290
+tensor(1.3816, device='cuda:0', grad_fn=<AddBackward0>)
+291
+tensor(2.4985, device='cuda:0', grad_fn=<AddBackward0>)
+292
+tensor(1.2675, device='cuda:0', grad_fn=<AddBackward0>)
+293
+tensor(2.3877, device='cuda:0', grad_fn=<AddBackward0>)
+294
+tensor(1.9901, device='cuda:0', grad_fn=<AddBackward0>)
+295
+tensor(2.5730, device='cuda:0', grad_fn=<AddBackward0>)
+296
+tensor(1.9500, device='cuda:0', grad_fn=<AddBackward0>)
+297
+tensor(1.6545, device='cuda:0', grad_fn=<AddBackward0>)
+298
+tensor(2.2960, device='cuda:0', grad_fn=<AddBackward0>)
+299
+tensor(1.4789, device='cuda:0', grad_fn=<AddBackward0>)
+300
+tensor(2.7609, device='cuda:0', grad_fn=<AddBackward0>)
+301
+tensor(1.5929, device='cuda:0', grad_fn=<AddBackward0>)
+302
+tensor(2.4273, device='cuda:0', grad_fn=<AddBackward0>)
+303
+tensor(1.8427, device='cuda:0', grad_fn=<AddBackward0>)
+304
+tensor(2.1364, device='cuda:0', grad_fn=<AddBackward0>)
+305
+tensor(1.6599, device='cuda:0', grad_fn=<AddBackward0>)
+306
+tensor(1.7447, device='cuda:0', grad_fn=<AddBackward0>)
+307
+tensor(2.4702, device='cuda:0', grad_fn=<AddBackward0>)
+308
+tensor(1.5556, device='cuda:0', grad_fn=<AddBackward0>)
+309
+tensor(2.0621, device='cuda:0', grad_fn=<AddBackward0>)
+310
+tensor(2.1896, device='cuda:0', grad_fn=<AddBackward0>)
+311
+tensor(1.6928, device='cuda:0', grad_fn=<AddBackward0>)
+312
+tensor(1.7372, device='cuda:0', grad_fn=<AddBackward0>)
+313
+tensor(2.4219, device='cuda:0', grad_fn=<AddBackward0>)
+314
+tensor(1.8313, device='cuda:0', grad_fn=<AddBackward0>)
+315
+tensor(2.1183, device='cuda:0', grad_fn=<AddBackward0>)
+316
+tensor(1.5092, device='cuda:0', grad_fn=<AddBackward0>)
+317
+tensor(1.3077, device='cuda:0', grad_fn=<AddBackward0>)
+318
+tensor(1.3003, device='cuda:0', grad_fn=<AddBackward0>)
+319
+tensor(1.7234, device='cuda:0', grad_fn=<AddBackward0>)
+320
+tensor(1.7583, device='cuda:0', grad_fn=<AddBackward0>)
+321
+tensor(1.5491, device='cuda:0', grad_fn=<AddBackward0>)
+322
+tensor(2.2772, device='cuda:0', grad_fn=<AddBackward0>)
+323
+tensor(1.9854, device='cuda:0', grad_fn=<AddBackward0>)
+324
+tensor(1.5820, device='cuda:0', grad_fn=<AddBackward0>)
+325
+tensor(2.7477, device='cuda:0', grad_fn=<AddBackward0>)
+326
+tensor(2.4743, device='cuda:0', grad_fn=<AddBackward0>)
+327
+tensor(1.5806, device='cuda:0', grad_fn=<AddBackward0>)
+328
+tensor(2.0838, device='cuda:0', grad_fn=<AddBackward0>)
+329
+tensor(2.2948, device='cuda:0', grad_fn=<AddBackward0>)
+330
+tensor(2.3916, device='cuda:0', grad_fn=<AddBackward0>)
+331
+tensor(2.0635, device='cuda:0', grad_fn=<AddBackward0>)
+332
+tensor(2.4145, device='cuda:0', grad_fn=<AddBackward0>)
+333
+tensor(1.5467, device='cuda:0', grad_fn=<AddBackward0>)
+334
+tensor(1.9767, device='cuda:0', grad_fn=<AddBackward0>)
+335
+tensor(1.7392, device='cuda:0', grad_fn=<AddBackward0>)
+336
+tensor(1.7764, device='cuda:0', grad_fn=<AddBackward0>)
+337
+tensor(1.7302, device='cuda:0', grad_fn=<AddBackward0>)
+338
+tensor(1.3785, device='cuda:0', grad_fn=<AddBackward0>)
+339
+tensor(1.4464, device='cuda:0', grad_fn=<AddBackward0>)
+340
+tensor(2.3881, device='cuda:0', grad_fn=<AddBackward0>)
+341
+tensor(1.4107, device='cuda:0', grad_fn=<AddBackward0>)
+342
+tensor(1.7533, device='cuda:0', grad_fn=<AddBackward0>)
+343
+tensor(1.8818, device='cuda:0', grad_fn=<AddBackward0>)
+344
+tensor(1.9207, device='cuda:0', grad_fn=<AddBackward0>)
+345
+tensor(2.3094, device='cuda:0', grad_fn=<AddBackward0>)
+346
+tensor(1.9504, device='cuda:0', grad_fn=<AddBackward0>)
+347
+tensor(2.0161, device='cuda:0', grad_fn=<AddBackward0>)
+348
+tensor(1.2369, device='cuda:0', grad_fn=<AddBackward0>)
+349
+tensor(1.6603, device='cuda:0', grad_fn=<AddBackward0>)
+350
+tensor(1.6649, device='cuda:0', grad_fn=<AddBackward0>)
+351
+tensor(1.4297, device='cuda:0', grad_fn=<AddBackward0>)
+352
+tensor(2.4822, device='cuda:0', grad_fn=<AddBackward0>)
+353
+tensor(1.9914, device='cuda:0', grad_fn=<AddBackward0>)
+354
+tensor(1.2798, device='cuda:0', grad_fn=<AddBackward0>)
+355
+tensor(1.0368, device='cuda:0', grad_fn=<AddBackward0>)
+356
+tensor(1.8367, device='cuda:0', grad_fn=<AddBackward0>)
+357
+tensor(1.5889, device='cuda:0', grad_fn=<AddBackward0>)
+358
+tensor(1.2109, device='cuda:0', grad_fn=<AddBackward0>)
+359
+tensor(1.4500, device='cuda:0', grad_fn=<AddBackward0>)
+360
+tensor(1.3644, device='cuda:0', grad_fn=<AddBackward0>)
+361
+tensor(1.7710, device='cuda:0', grad_fn=<AddBackward0>)
+362
+tensor(1.8948, device='cuda:0', grad_fn=<AddBackward0>)
+363
+tensor(1.5207, device='cuda:0', grad_fn=<AddBackward0>)
+364
+tensor(2.4962, device='cuda:0', grad_fn=<AddBackward0>)
+365
+tensor(1.6706, device='cuda:0', grad_fn=<AddBackward0>)
+366
+tensor(1.4397, device='cuda:0', grad_fn=<AddBackward0>)
+367
+tensor(1.5341, device='cuda:0', grad_fn=<AddBackward0>)
+368
+tensor(1.5876, device='cuda:0', grad_fn=<AddBackward0>)
+369
+tensor(1.3001, device='cuda:0', grad_fn=<AddBackward0>)
+370
+tensor(1.9995, device='cuda:0', grad_fn=<AddBackward0>)
+371
+tensor(1.1232, device='cuda:0', grad_fn=<AddBackward0>)
+372
+tensor(1.7420, device='cuda:0', grad_fn=<AddBackward0>)
+373
+tensor(1.7821, device='cuda:0', grad_fn=<AddBackward0>)
+374
+tensor(1.6867, device='cuda:0', grad_fn=<AddBackward0>)
+375
+tensor(1.6005, device='cuda:0', grad_fn=<AddBackward0>)
+376
+tensor(2.1388, device='cuda:0', grad_fn=<AddBackward0>)
+377
+tensor(2.0518, device='cuda:0', grad_fn=<AddBackward0>)
+378
+tensor(1.6860, device='cuda:0', grad_fn=<AddBackward0>)
+379
+tensor(1.3759, device='cuda:0', grad_fn=<AddBackward0>)
+380
+tensor(1.9354, device='cuda:0', grad_fn=<AddBackward0>)
+381
+tensor(1.5289, device='cuda:0', grad_fn=<AddBackward0>)
+382
+tensor(1.6470, device='cuda:0', grad_fn=<AddBackward0>)
+383
+tensor(1.5674, device='cuda:0', grad_fn=<AddBackward0>)
+384
+tensor(1.9470, device='cuda:0', grad_fn=<AddBackward0>)
+385
+tensor(1.2365, device='cuda:0', grad_fn=<AddBackward0>)
+386
+tensor(1.4352, device='cuda:0', grad_fn=<AddBackward0>)
+387
+tensor(2.0273, device='cuda:0', grad_fn=<AddBackward0>)
+388
+tensor(2.0325, device='cuda:0', grad_fn=<AddBackward0>)
+389
+tensor(1.8103, device='cuda:0', grad_fn=<AddBackward0>)
+390
+tensor(1.9943, device='cuda:0', grad_fn=<AddBackward0>)
+391
+tensor(1.7523, device='cuda:0', grad_fn=<AddBackward0>)
+392
+tensor(1.3321, device='cuda:0', grad_fn=<AddBackward0>)
+393
+tensor(2.0685, device='cuda:0', grad_fn=<AddBackward0>)
+394
+tensor(1.2441, device='cuda:0', grad_fn=<AddBackward0>)
+395
+tensor(1.9639, device='cuda:0', grad_fn=<AddBackward0>)
+396
+tensor(1.1353, device='cuda:0', grad_fn=<AddBackward0>)
+397
+tensor(1.3953, device='cuda:0', grad_fn=<AddBackward0>)
+398
+tensor(1.9571, device='cuda:0', grad_fn=<AddBackward0>)
+399
+Epoch #1: loss=1.9864393723011018
+tensor(1.6386, device='cuda:0', grad_fn=<AddBackward0>)
+400
+tensor(1.8781, device='cuda:0', grad_fn=<AddBackward0>)
+401
+tensor(2.0074, device='cuda:0', grad_fn=<AddBackward0>)
+402
+tensor(1.5361, device='cuda:0', grad_fn=<AddBackward0>)
+403
+tensor(1.6316, device='cuda:0', grad_fn=<AddBackward0>)
+404
+tensor(1.8175, device='cuda:0', grad_fn=<AddBackward0>)
+405
+tensor(1.7560, device='cuda:0', grad_fn=<AddBackward0>)
+406
+tensor(2.7135, device='cuda:0', grad_fn=<AddBackward0>)
+407
+tensor(0.9856, device='cuda:0', grad_fn=<AddBackward0>)
+408
+tensor(1.3897, device='cuda:0', grad_fn=<AddBackward0>)
+409
+tensor(1.4093, device='cuda:0', grad_fn=<AddBackward0>)
+410
+tensor(1.5757, device='cuda:0', grad_fn=<AddBackward0>)
+411
+tensor(2.1727, device='cuda:0', grad_fn=<AddBackward0>)
+412
+tensor(1.8900, device='cuda:0', grad_fn=<AddBackward0>)
+413
+tensor(1.8903, device='cuda:0', grad_fn=<AddBackward0>)
+414
+tensor(1.6724, device='cuda:0', grad_fn=<AddBackward0>)
+415
+tensor(1.3291, device='cuda:0', grad_fn=<AddBackward0>)
+416
+tensor(1.8633, device='cuda:0', grad_fn=<AddBackward0>)
+417
+tensor(1.5131, device='cuda:0', grad_fn=<AddBackward0>)
+418
+tensor(2.3043, device='cuda:0', grad_fn=<AddBackward0>)
+419
+tensor(1.9084, device='cuda:0', grad_fn=<AddBackward0>)
+420
+tensor(1.1896, device='cuda:0', grad_fn=<AddBackward0>)
+421
+tensor(1.6091, device='cuda:0', grad_fn=<AddBackward0>)
+422
+tensor(0.9950, device='cuda:0', grad_fn=<AddBackward0>)
+423
+tensor(1.0878, device='cuda:0', grad_fn=<AddBackward0>)
+424
+tensor(1.2936, device='cuda:0', grad_fn=<AddBackward0>)
+425
+tensor(1.3549, device='cuda:0', grad_fn=<AddBackward0>)
+426
+tensor(1.2414, device='cuda:0', grad_fn=<AddBackward0>)
+427
+tensor(1.9104, device='cuda:0', grad_fn=<AddBackward0>)
+428
+tensor(1.1100, device='cuda:0', grad_fn=<AddBackward0>)
+429
+tensor(1.2985, device='cuda:0', grad_fn=<AddBackward0>)
+430
+tensor(1.9333, device='cuda:0', grad_fn=<AddBackward0>)
+431
+tensor(1.2887, device='cuda:0', grad_fn=<AddBackward0>)
+432
+tensor(1.4947, device='cuda:0', grad_fn=<AddBackward0>)
+433
+tensor(1.6920, device='cuda:0', grad_fn=<AddBackward0>)
+434
+tensor(2.1541, device='cuda:0', grad_fn=<AddBackward0>)
+435
+tensor(1.1162, device='cuda:0', grad_fn=<AddBackward0>)
+436
+tensor(1.2561, device='cuda:0', grad_fn=<AddBackward0>)
+437
+tensor(2.2699, device='cuda:0', grad_fn=<AddBackward0>)
+438
+tensor(1.8852, device='cuda:0', grad_fn=<AddBackward0>)
+439
+tensor(1.1459, device='cuda:0', grad_fn=<AddBackward0>)
+440
+tensor(1.7266, device='cuda:0', grad_fn=<AddBackward0>)
+441
+tensor(1.8714, device='cuda:0', grad_fn=<AddBackward0>)
+442
+tensor(0.4903, device='cuda:0', grad_fn=<AddBackward0>)
+443
+tensor(1.2906, device='cuda:0', grad_fn=<AddBackward0>)
+444
+tensor(2.1856, device='cuda:0', grad_fn=<AddBackward0>)
+445
+tensor(1.6238, device='cuda:0', grad_fn=<AddBackward0>)
+446
+tensor(1.6966, device='cuda:0', grad_fn=<AddBackward0>)
+447
+tensor(2.2249, device='cuda:0', grad_fn=<AddBackward0>)
+448
+tensor(1.7543, device='cuda:0', grad_fn=<AddBackward0>)
+449
+tensor(1.1525, device='cuda:0', grad_fn=<AddBackward0>)
+450
+tensor(1.5101, device='cuda:0', grad_fn=<AddBackward0>)
+451
+tensor(1.4580, device='cuda:0', grad_fn=<AddBackward0>)
+452
+tensor(1.6778, device='cuda:0', grad_fn=<AddBackward0>)
+453
+tensor(1.2061, device='cuda:0', grad_fn=<AddBackward0>)
+454
+tensor(1.4450, device='cuda:0', grad_fn=<AddBackward0>)
+455
+tensor(1.2460, device='cuda:0', grad_fn=<AddBackward0>)
+456
+tensor(2.2898, device='cuda:0', grad_fn=<AddBackward0>)
+457
+tensor(0.7610, device='cuda:0', grad_fn=<AddBackward0>)
+458
+tensor(1.8527, device='cuda:0', grad_fn=<AddBackward0>)
+459
+tensor(1.7507, device='cuda:0', grad_fn=<AddBackward0>)
+460
+tensor(1.5770, device='cuda:0', grad_fn=<AddBackward0>)
+461
+tensor(2.0594, device='cuda:0', grad_fn=<AddBackward0>)
+462
+tensor(1.3304, device='cuda:0', grad_fn=<AddBackward0>)
+463
+tensor(1.9215, device='cuda:0', grad_fn=<AddBackward0>)
+464
+tensor(1.6554, device='cuda:0', grad_fn=<AddBackward0>)
+465
+tensor(1.7837, device='cuda:0', grad_fn=<AddBackward0>)
+466
+tensor(1.3430, device='cuda:0', grad_fn=<AddBackward0>)
+467
+tensor(1.8035, device='cuda:0', grad_fn=<AddBackward0>)
+468
+tensor(1.3085, device='cuda:0', grad_fn=<AddBackward0>)
+469
+tensor(1.2067, device='cuda:0', grad_fn=<AddBackward0>)
+470
+tensor(1.3634, device='cuda:0', grad_fn=<AddBackward0>)
+471
+tensor(1.0614, device='cuda:0', grad_fn=<AddBackward0>)
+472
+tensor(1.1294, device='cuda:0', grad_fn=<AddBackward0>)
+473
+tensor(1.1220, device='cuda:0', grad_fn=<AddBackward0>)
+474
+tensor(1.3640, device='cuda:0', grad_fn=<AddBackward0>)
+475
+tensor(1.3753, device='cuda:0', grad_fn=<AddBackward0>)
+476
+tensor(0.5111, device='cuda:0', grad_fn=<AddBackward0>)
+477
+tensor(0.9503, device='cuda:0', grad_fn=<AddBackward0>)
+478
+tensor(1.4965, device='cuda:0', grad_fn=<AddBackward0>)
+479
+tensor(1.3994, device='cuda:0', grad_fn=<AddBackward0>)
+480
+tensor(1.4949, device='cuda:0', grad_fn=<AddBackward0>)
+481
+tensor(1.1989, device='cuda:0', grad_fn=<AddBackward0>)
+482
+tensor(1.4724, device='cuda:0', grad_fn=<AddBackward0>)
+483
+tensor(1.4668, device='cuda:0', grad_fn=<AddBackward0>)
+484
+tensor(1.8621, device='cuda:0', grad_fn=<AddBackward0>)
+485
+tensor(1.2037, device='cuda:0', grad_fn=<AddBackward0>)
+486
+tensor(1.4449, device='cuda:0', grad_fn=<AddBackward0>)
+487
+tensor(2.1643, device='cuda:0', grad_fn=<AddBackward0>)
+488
+tensor(0.9599, device='cuda:0', grad_fn=<AddBackward0>)
+489
+tensor(1.7637, device='cuda:0', grad_fn=<AddBackward0>)
+490
+tensor(1.3868, device='cuda:0', grad_fn=<AddBackward0>)
+491
+tensor(1.2674, device='cuda:0', grad_fn=<AddBackward0>)
+492
+tensor(1.7525, device='cuda:0', grad_fn=<AddBackward0>)
+493
+tensor(0.8330, device='cuda:0', grad_fn=<AddBackward0>)
+494
+tensor(1.5986, device='cuda:0', grad_fn=<AddBackward0>)
+495
+tensor(1.4929, device='cuda:0', grad_fn=<AddBackward0>)
+496
+tensor(1.1599, device='cuda:0', grad_fn=<AddBackward0>)
+497
+tensor(2.0213, device='cuda:0', grad_fn=<AddBackward0>)
+498
+tensor(2.1225, device='cuda:0', grad_fn=<AddBackward0>)
+499
+tensor(1.0812, device='cuda:0', grad_fn=<AddBackward0>)
+500
+tensor(0.9363, device='cuda:0', grad_fn=<AddBackward0>)
+501
+tensor(1.3803, device='cuda:0', grad_fn=<AddBackward0>)
+502
+tensor(1.1404, device='cuda:0', grad_fn=<AddBackward0>)
+503
+tensor(1.5709, device='cuda:0', grad_fn=<AddBackward0>)
+504
+tensor(0.9951, device='cuda:0', grad_fn=<AddBackward0>)
+505
+tensor(1.7654, device='cuda:0', grad_fn=<AddBackward0>)
+506
+tensor(1.2753, device='cuda:0', grad_fn=<AddBackward0>)
+507
+tensor(0.6684, device='cuda:0', grad_fn=<AddBackward0>)
+508
+tensor(1.5585, device='cuda:0', grad_fn=<AddBackward0>)
+509
+tensor(1.3000, device='cuda:0', grad_fn=<AddBackward0>)
+510
+tensor(1.4862, device='cuda:0', grad_fn=<AddBackward0>)
+511
+tensor(1.9729, device='cuda:0', grad_fn=<AddBackward0>)
+512
+tensor(1.8857, device='cuda:0', grad_fn=<AddBackward0>)
+513
+tensor(1.5963, device='cuda:0', grad_fn=<AddBackward0>)
+514
+tensor(1.2495, device='cuda:0', grad_fn=<AddBackward0>)
+515
+tensor(1.6095, device='cuda:0', grad_fn=<AddBackward0>)
+516
+tensor(1.5667, device='cuda:0', grad_fn=<AddBackward0>)
+517
+tensor(1.1375, device='cuda:0', grad_fn=<AddBackward0>)
+518
+tensor(1.3701, device='cuda:0', grad_fn=<AddBackward0>)
+519
+tensor(1.8698, device='cuda:0', grad_fn=<AddBackward0>)
+520
+tensor(1.1450, device='cuda:0', grad_fn=<AddBackward0>)
+521
+tensor(2.0590, device='cuda:0', grad_fn=<AddBackward0>)
+522
+tensor(2.0880, device='cuda:0', grad_fn=<AddBackward0>)
+523
+tensor(1.2458, device='cuda:0', grad_fn=<AddBackward0>)
+524
+tensor(1.3879, device='cuda:0', grad_fn=<AddBackward0>)
+525
+tensor(1.4575, device='cuda:0', grad_fn=<AddBackward0>)
+526
+tensor(1.2698, device='cuda:0', grad_fn=<AddBackward0>)
+527
+tensor(1.6235, device='cuda:0', grad_fn=<AddBackward0>)
+528
+tensor(1.2747, device='cuda:0', grad_fn=<AddBackward0>)
+529
+tensor(1.1862, device='cuda:0', grad_fn=<AddBackward0>)
+530
+tensor(1.4240, device='cuda:0', grad_fn=<AddBackward0>)
+531
+tensor(1.3644, device='cuda:0', grad_fn=<AddBackward0>)
+532
+tensor(1.8765, device='cuda:0', grad_fn=<AddBackward0>)
+533
+tensor(1.2771, device='cuda:0', grad_fn=<AddBackward0>)
+534
+tensor(1.4452, device='cuda:0', grad_fn=<AddBackward0>)
+535
+tensor(1.2218, device='cuda:0', grad_fn=<AddBackward0>)
+536
+tensor(0.6501, device='cuda:0', grad_fn=<AddBackward0>)
+537
+tensor(1.0150, device='cuda:0', grad_fn=<AddBackward0>)
+538
+tensor(1.2645, device='cuda:0', grad_fn=<AddBackward0>)
+539
+tensor(1.7936, device='cuda:0', grad_fn=<AddBackward0>)
+540
+tensor(1.0049, device='cuda:0', grad_fn=<AddBackward0>)
+541
+tensor(0.6393, device='cuda:0', grad_fn=<AddBackward0>)
+542
+tensor(1.4383, device='cuda:0', grad_fn=<AddBackward0>)
+543
+tensor(1.9759, device='cuda:0', grad_fn=<AddBackward0>)
+544
+tensor(0.8695, device='cuda:0', grad_fn=<AddBackward0>)
+545
+tensor(0.7291, device='cuda:0', grad_fn=<AddBackward0>)
+546
+tensor(0.7669, device='cuda:0', grad_fn=<AddBackward0>)
+547
+tensor(0.8056, device='cuda:0', grad_fn=<AddBackward0>)
+548
+tensor(1.1275, device='cuda:0', grad_fn=<AddBackward0>)
+549
+tensor(2.0920, device='cuda:0', grad_fn=<AddBackward0>)
+550
+tensor(1.1202, device='cuda:0', grad_fn=<AddBackward0>)
+551
+tensor(0.7809, device='cuda:0', grad_fn=<AddBackward0>)
+552
+tensor(1.6651, device='cuda:0', grad_fn=<AddBackward0>)
+553
+tensor(1.1099, device='cuda:0', grad_fn=<AddBackward0>)
+554
+tensor(1.4550, device='cuda:0', grad_fn=<AddBackward0>)
+555
+tensor(1.3815, device='cuda:0', grad_fn=<AddBackward0>)
+556
+tensor(1.7379, device='cuda:0', grad_fn=<AddBackward0>)
+557
+tensor(0.6531, device='cuda:0', grad_fn=<AddBackward0>)
+558
+tensor(2.6756, device='cuda:0', grad_fn=<AddBackward0>)
+559
+tensor(1.0214, device='cuda:0', grad_fn=<AddBackward0>)
+560
+tensor(1.3902, device='cuda:0', grad_fn=<AddBackward0>)
+561
+tensor(1.0386, device='cuda:0', grad_fn=<AddBackward0>)
+562
+tensor(0.7687, device='cuda:0', grad_fn=<AddBackward0>)
+563
+tensor(1.0596, device='cuda:0', grad_fn=<AddBackward0>)
+564
+tensor(0.8470, device='cuda:0', grad_fn=<AddBackward0>)
+565
+tensor(0.7898, device='cuda:0', grad_fn=<AddBackward0>)
+566
+tensor(0.8317, device='cuda:0', grad_fn=<AddBackward0>)
+567
+tensor(1.0389, device='cuda:0', grad_fn=<AddBackward0>)
+568
+tensor(1.1745, device='cuda:0', grad_fn=<AddBackward0>)
+569
+tensor(1.1554, device='cuda:0', grad_fn=<AddBackward0>)
+570
+tensor(1.9912, device='cuda:0', grad_fn=<AddBackward0>)
+571
+tensor(2.5194, device='cuda:0', grad_fn=<AddBackward0>)
+572
+tensor(0.9947, device='cuda:0', grad_fn=<AddBackward0>)
+573
+tensor(0.8598, device='cuda:0', grad_fn=<AddBackward0>)
+574
+tensor(1.1875, device='cuda:0', grad_fn=<AddBackward0>)
+575
+tensor(1.2993, device='cuda:0', grad_fn=<AddBackward0>)
+576
+tensor(0.7757, device='cuda:0', grad_fn=<AddBackward0>)
+577
+tensor(1.3691, device='cuda:0', grad_fn=<AddBackward0>)
+578
+tensor(0.6362, device='cuda:0', grad_fn=<AddBackward0>)
+579
+tensor(1.3697, device='cuda:0', grad_fn=<AddBackward0>)
+580
+tensor(1.2611, device='cuda:0', grad_fn=<AddBackward0>)
+581
+tensor(1.0583, device='cuda:0', grad_fn=<AddBackward0>)
+582
+tensor(1.2140, device='cuda:0', grad_fn=<AddBackward0>)
+583
+tensor(0.8892, device='cuda:0', grad_fn=<AddBackward0>)
+584
+tensor(1.9475, device='cuda:0', grad_fn=<AddBackward0>)
+585
+tensor(1.5672, device='cuda:0', grad_fn=<AddBackward0>)
+586
+tensor(0.8026, device='cuda:0', grad_fn=<AddBackward0>)
+587
+tensor(1.8917, device='cuda:0', grad_fn=<AddBackward0>)
+588
+tensor(1.3093, device='cuda:0', grad_fn=<AddBackward0>)
+589
+tensor(1.1742, device='cuda:0', grad_fn=<AddBackward0>)
+590
+tensor(1.1159, device='cuda:0', grad_fn=<AddBackward0>)
+591
+tensor(0.9981, device='cuda:0', grad_fn=<AddBackward0>)
+592
+tensor(1.5643, device='cuda:0', grad_fn=<AddBackward0>)
+593
+tensor(1.6252, device='cuda:0', grad_fn=<AddBackward0>)
+594
+tensor(0.8174, device='cuda:0', grad_fn=<AddBackward0>)
+595
+tensor(1.6941, device='cuda:0', grad_fn=<AddBackward0>)
+596
+tensor(1.7316, device='cuda:0', grad_fn=<AddBackward0>)
+597
+tensor(1.8997, device='cuda:0', grad_fn=<AddBackward0>)
+598
+tensor(0.9118, device='cuda:0', grad_fn=<AddBackward0>)
+599
+Epoch #2: loss=1.4247868137061597
+
+Training time: 0:05:05.156556
+
+Evaluation result: {'ours': {24: {'norm': {'MSE': 0.14686514561088004, 'MAE': 0.2550945778611274}, 'raw': {'MSE': 4078466.2392711877, 'MAE': 228.83919954541634}}, 48: {'norm': {'MSE': 0.16366068456697758, 'MAE': 0.2713992469471388}, 'raw': {'MSE': 4982970.981229888, 'MAE': 245.7729892572206}}, 168: {'norm': {'MSE': 0.18069087021579677, 'MAE': 0.28688591856729995}, 'raw': {'MSE': 7210327.623067527, 'MAE': 268.80241779867833}}, 336: {'norm': {'MSE': 0.20340743764598596, 'MAE': 0.3090046013185406}, 'raw': {'MSE': 8723346.235195862, 'MAE': 292.6046471969931}}, 720: {'norm': {'MSE': 0.2415238124870539, 'MAE': 0.34171735614434273}, 'raw': {'MSE': 11035095.350013273, 'MAE': 330.5113744016236}}}, 'encoder_infer_time': 17481.78066086769, 'lr_train_time': {24: 8.6436607837677, 48: 9.859012126922607, 168: 17.630138635635376, 336: 17.825072288513184, 720: 79.44702625274658}, 'lr_infer_time': {24: 0.569023847579956, 48: 0.6924664974212646, 168: 0.9160809516906738, 336: 1.3666999340057373, 720: 2.151477336883545}}
+Finished.

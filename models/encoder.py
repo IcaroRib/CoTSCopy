@@ -17,15 +17,15 @@ def generate_continuous_mask(B, T, n=5, l=0.1):
     if isinstance(n, float):
         n = int(n * T)
     n = max(min(n, T // 2), 1)
-    
+
     if isinstance(l, float):
         l = int(l * T)
     l = max(l, 1)
-    
+
     for i in range(B):
         for _ in range(n):
-            t = np.random.randint(T-l+1)
-            res[i, t:t+l] = False
+            t = np.random.randint(T - l + 1)
+            res[i, t:t + l] = False
     return res
 
 
@@ -46,11 +46,11 @@ class BandedFourierLayer(nn.Module):
         self.band = band  # zero indexed
         self.num_bands = num_bands
 
-        self.num_freqs = self.total_freqs // self.num_bands + (self.total_freqs % self.num_bands if self.band == self.num_bands - 1 else 0)
+        self.num_freqs = self.total_freqs // self.num_bands + (
+            self.total_freqs % self.num_bands if self.band == self.num_bands - 1 else 0)
 
         self.start = self.band * (self.total_freqs // self.num_bands)
         self.end = self.start + self.num_freqs
-
 
         # case: from other frequencies
         self.weight = nn.Parameter(torch.empty((self.num_freqs, in_channels, out_channels), dtype=torch.cfloat))
@@ -104,7 +104,7 @@ class CoSTEncoder(nn.Module):
         self.kernels = kernels
 
         self.tfd = nn.ModuleList(
-            [nn.Conv1d(output_dims, component_dims, k, padding=k-1) for k in kernels]
+            [nn.Conv1d(output_dims, component_dims, k, padding=k - 1) for k in kernels]
         )
 
         self.sfd = nn.ModuleList(
@@ -112,6 +112,7 @@ class CoSTEncoder(nn.Module):
         )
 
     def forward(self, x, tcn_output=False, mask='all_true'):  # x: B x T x input_dims
+        print(x.shape)  # B x T x input_dims
         nan_mask = ~x.isnan().any(axis=-1)
         x[~nan_mask] = 0
         x = self.input_fc(x)  # B x T x Ch
@@ -146,6 +147,8 @@ class CoSTEncoder(nn.Module):
             return x.transpose(1, 2)
 
         trend = []
+        print('X before CONV1D')
+        print(x.shape)
         for idx, mod in enumerate(self.tfd):
             out = mod(x)  # b d t
             if self.kernels[idx] != 1:
