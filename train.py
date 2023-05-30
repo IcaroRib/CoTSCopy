@@ -39,6 +39,7 @@ if __name__ == '__main__':
     parser.add_argument('--seed', type=int, default=None, help='The random seed')
     parser.add_argument('--max-threads', type=int, default=None, help='The maximum allowed number of threads used by this process')
     parser.add_argument('--eval', action="store_true", help='Whether to perform evaluation after training')
+    parser.add_argument('--recurrent', type=str, default=None, help='Define a type of recurrent encoder. Options are rnn, lstm and gru')
 
     parser.add_argument('--kernels', type=int, nargs='+', default=[1, 2, 4, 8, 16, 32, 64, 128], help='The kernel sizes used in the mixture of AR expert layers')
     parser.add_argument('--alpha', type=float, default=0.0005, help='Weighting hyperparameter for loss function')
@@ -73,6 +74,7 @@ if __name__ == '__main__':
         batch_size=args.batch_size,
         lr=args.lr,
         output_dims=args.repr_dims,
+        recurrent=args.recurrent,
     )
     
     if args.save_every is not None:

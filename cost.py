@@ -11,7 +11,7 @@ import numpy as np
 from einops import rearrange, repeat, reduce
 
 from models.encoder import CoSTEncoder
-from models.lstm_encoder import CoSTEncoder
+from models.recurrent_encoder import CoSTRecurrentEncoder
 from utils import take_per_row, split_with_nan, centerize_vary_length_series, torch_pad_nan
 
 
@@ -211,6 +211,7 @@ class CoST:
                  device: 'str' ='cuda',
                  lr: float = 0.001,
                  batch_size: int = 16,
+                 recurrent: str = None,
                  after_iter_callback: Union[Callable, None] = None,
                  after_epoch_callback: Union[Callable, None] = None):
 
@@ -226,12 +227,22 @@ class CoST:
         if kernels is None:
             kernels = []
 
-        self.net = CoSTEncoder(
-            input_dims=input_dims, output_dims=output_dims,
-            kernels=kernels,
-            length=max_train_length,
-            hidden_dims=hidden_dims, depth=depth,
-        ).to(self.device)
+        if recurrent:
+            self.net = CoSTRecurrentEncoder(
+                input_dims=input_dims, output_dims=output_dims,
+                kernels=kernels,
+                length=max_train_length,
+                hidden_dims=hidden_dims, depth=depth,
+                architecture=recurrent
+            ).to(self.device)
+
+        else:
+            self.net = CoSTEncoder(
+                input_dims=input_dims, output_dims=output_dims,
+                kernels=kernels,
+                length=max_train_length,
+                hidden_dims=hidden_dims, depth=depth,
+            ).to(self.device)
 
         self.cost = CoSTModel(
             self.net,
