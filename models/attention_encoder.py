@@ -86,15 +86,10 @@ class CoSTTransformerEncoder(nn.Module):
         # x = x.transpose(1, 2)  # B x Ch x T
         x = self.feature_extractor(x)  # B x Co x T
 
-        print('X after feature_extractor')
-        print(x.shape)
-
         if tcn_output:
             return x.transpose(1, 2)
 
         trend = []
-        print('X before Transformer')
-        print(x.shape)
         for mod in self.tfd:
             out = mod(x)  # b t d
             trend.append(out)
@@ -106,6 +101,7 @@ class CoSTTransformerEncoder(nn.Module):
         season = []
         # print(f"X shape before season desintangler: {x.shape}" )
         for mod in self.sfd:
+            print(x.device)
             out = mod(x)  # b t d
             season.append(out)
         season = season[0]
