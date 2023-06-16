@@ -92,8 +92,8 @@ class CoSTTransformerEncoder(nn.Module):
             return x.transpose(1, 2)
 
         trend = []
-        print('X before Transformer')
-        print(x.shape)
+        #print('X before Transformer')
+        #print(x.shape)
         for mod in self.tfd:
             mod_gpu = mod.to(x.device)
             out = mod_gpu(x)  # b t d
@@ -104,7 +104,7 @@ class CoSTTransformerEncoder(nn.Module):
         )
 
         season = []
-        print(f"X shape before season desintangler: {x.shape}" )
+        #print(f"X shape before season desintangler: {x.shape}" )
         for mod in self.sfd:
             out = mod(x)  # b t d
             season.append(out)
