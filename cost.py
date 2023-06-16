@@ -238,7 +238,6 @@ class CoST:
                 architecture=recurrent
             ).to(self.device)
         elif attention:
-            self.attention = attention
             self.net = CoSTTransformerEncoder(
                 input_dims=input_dims,
                 output_dims=output_dims,
@@ -319,8 +318,6 @@ class CoST:
 
                 optimizer.zero_grad()
 
-                if self.attention:
-                    print("Data to device")
                 loss = self.cost(x_q, x_k)
 
                 loss.backward()
