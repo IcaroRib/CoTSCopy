@@ -213,6 +213,7 @@ class CoST:
                  lr: float = 0.001,
                  batch_size: int = 16,
                  recurrent: str = None,
+                 attention: str = None,
                  after_iter_callback: Union[Callable, None] = None,
                  after_epoch_callback: Union[Callable, None] = None):
 
