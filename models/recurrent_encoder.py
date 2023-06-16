@@ -91,6 +91,8 @@ class CoSTRecurrentEncoder(nn.Module):
 
         # conv encoder
         # x = x.transpose(1, 2)  # B x Ch x T
+        print('X before feature_extractor')
+        print(x.shape)
         x = self.feature_extractor(x)  # B x Co x T
 
         if tcn_output:

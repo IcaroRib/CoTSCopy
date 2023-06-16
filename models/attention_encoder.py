@@ -13,9 +13,9 @@ from .encoder import BandedFourierLayer, generate_binomial_mask, generate_contin
 
 
 class DilatedAttentionEncoder(nn.Module):
-    def __init__(self, input_size, nheads, output_size):
+    def __init__(self, input_size, nheads):
         super().__init__()
-        self.net = nn.TransformerEncoderLayer(input_size, nheads, output_size)
+        self.net = nn.TransformerEncoderLayer(d_model=input_size, nhead=nheads)
 
     def forward(self, x):
         out = self.net(x)
@@ -31,7 +31,7 @@ class CoSTTransformerEncoder(nn.Module):
                  output_dims,
                  length: int,
                  hidden_dims=64,
-                 nheads=8,
+                 nheads=5,
                  mask_mode='binomial'):
         super().__init__()
 
@@ -44,9 +44,11 @@ class CoSTTransformerEncoder(nn.Module):
         self.mask_mode = mask_mode
         self.input_fc = nn.Linear(input_dims, hidden_dims)
 
+        self.feature_extractor = DilatedAttentionEncoder(hidden_dims, nheads)
+
         self.repr_dropout = nn.Dropout(p=0.1)
 
-        self.tfd = [nn.TransformerEncoderLayer(hidden_dims, nheads, component_dims) for k in range(5)]
+        self.tfd = [nn.TransformerEncoderLayer(hidden_dims, nheads) for k in range(10)]
 
         self.sfd = nn.ModuleList(
             [BandedFourierLayer(output_dims, component_dims, b, 1, length=length) for b in range(1)]
@@ -54,7 +56,6 @@ class CoSTTransformerEncoder(nn.Module):
 
     def forward(self, x, tcn_output=False, mask='all_true'):  # x: B x T x input_dims
 
-        print(x.shape)
         nan_mask = ~x.isnan().any(axis=-1)
         x[~nan_mask] = 0
         x = self.input_fc(x)  # B x T x Ch
@@ -81,8 +82,16 @@ class CoSTTransformerEncoder(nn.Module):
         mask &= nan_mask
         x[~mask] = 0
 
+        # conv encoder
+        # x = x.transpose(1, 2)  # B x Ch x T
+        x = self.feature_extractor(x)  # B x Co x T
+
+        if tcn_output:
+            return x.transpose(1, 2)
+
         trend = []
-        print(f'X Shape: {x.shape}')
+        print('X before Transformer')
+        print(x.shape)
         for mod in self.tfd:
             mod_gpu = mod.to(x.device)
             out = mod_gpu(x)  # b t d
@@ -93,7 +102,7 @@ class CoSTTransformerEncoder(nn.Module):
         )
 
         season = []
-        # print(f"X shape before season desintangler: {x.shape}" )
+        print(f"X shape before season desintangler: {x.shape}" )
         for mod in self.sfd:
             out = mod(x)  # b t d
             season.append(out)
