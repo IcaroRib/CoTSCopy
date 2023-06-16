@@ -92,6 +92,7 @@ class CoSTTransformerEncoder(nn.Module):
         trend = []
         for mod in self.tfd:
             print(x.device)
+            print(mod.device)
             out = mod(x)  # b t d
             trend.append(out)
         trend = reduce(
