@@ -74,7 +74,7 @@ def data_dropout(arr, p):
 
 def name_with_datetime(prefix='default', alpha=""):
     now = datetime.now()
-    return prefix + str(alpha) + '_' + now.strftime("%Y%m%d_%H%M%S")
+    return prefix + "_" + str(alpha) + '_' + now.strftime("%Y%m%d_%H%M%S")
 
 def init_dl_program(
     device_name,
