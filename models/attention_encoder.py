@@ -12,14 +12,16 @@ import numpy as np
 from .encoder import BandedFourierLayer, generate_binomial_mask, generate_continuous_mask
 
 
-class DilatedAttentionEncoder(nn.Module):
-    def __init__(self, input_size, nheads):
+class CustomizedTransformerEncoder(nn.Module):
+    def __init__(self, input_size, nheads, output_size):
         super().__init__()
         self.net = nn.TransformerEncoderLayer(d_model=input_size, nhead=nheads)
+        self.linear = nn.Linear(input_size, output_size)
 
     def forward(self, x):
-        out = self.net(x)
-        return out
+        out_transformer = self.net(x)
+        linear_out = self.linear(out_transformer)
+        return linear_out
 
 
 class CoSTTransformerEncoder(nn.Module):
@@ -44,11 +46,11 @@ class CoSTTransformerEncoder(nn.Module):
         self.mask_mode = mask_mode
         self.input_fc = nn.Linear(input_dims, hidden_dims)
 
-        self.feature_extractor = DilatedAttentionEncoder(hidden_dims, nheads)
+        self.feature_extractor = CustomizedTransformerEncoder(hidden_dims, nheads, output_dims)
 
         self.repr_dropout = nn.Dropout(p=0.1)
 
-        self.tfd = [nn.TransformerEncoderLayer(hidden_dims, nheads) for k in range(10)]
+        self.tfd = [CustomizedTransformerEncoder(hidden_dims, nheads, component_dims) for k in range(10)]
 
         self.sfd = nn.ModuleList(
             [BandedFourierLayer(output_dims, component_dims, b, 1, length=length) for b in range(1)]

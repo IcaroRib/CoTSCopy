@@ -62,7 +62,7 @@ class CoSTRecurrentEncoder(nn.Module):
         )
 
     def forward(self, x, tcn_output=False, mask='all_true'):  # x: B x T x input_dims
-        print(x.shape) #B x T x input_dims
+        #print(x.shape) #B x T x input_dims
         nan_mask = ~x.isnan().any(axis=-1)
         x[~nan_mask] = 0
         x = self.input_fc(x)  # B x T x Ch
@@ -91,19 +91,19 @@ class CoSTRecurrentEncoder(nn.Module):
 
         # conv encoder
         # x = x.transpose(1, 2)  # B x Ch x T
-        print('X before feature_extractor')
-        print(x.shape)
+        #print('X before feature_extractor')
+        #print(x.shape)
         x = self.feature_extractor(x)  # B x Co x T
 
         if tcn_output:
             return x.transpose(1, 2)
 
         trend = []
-        print('X before LSTM')
-        print(x.shape)
+        #print('X before LSTM')
+        #print(x.shape)
         for mod in self.tfd:
             out, _ = mod(x)  # b t d
-            print(f"Out shape: {out.shape}")
+            #print(f"Out shape: {out.shape}")
             trend.append(out)
         trend = reduce(
             rearrange(trend, 'list b t d -> list b t d'),
@@ -111,10 +111,12 @@ class CoSTRecurrentEncoder(nn.Module):
         )
 
         season = []
-        print(f"X shape before season desintangler: {x.shape}" )
+        #print(f"X shape before season desintangler: {x.shape}" )
         for mod in self.sfd:
             out = mod(x)  # b t d
             season.append(out)
         season = season[0]
 
+        print("trend shape = ")
+        print(trend.shape)
         return trend, self.repr_dropout(season)
