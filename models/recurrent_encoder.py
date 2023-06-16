@@ -54,7 +54,7 @@ class CoSTRecurrentEncoder(nn.Module):
         self.kernels = kernels
 
         self.tfd = nn.ModuleList(
-            [self.architecture(component_dims, component_dims, 1, False) for k in kernels]
+            [self.architecture(output_dims, component_dims, 1, False) for k in kernels]
         )
 
         self.sfd = nn.ModuleList(
