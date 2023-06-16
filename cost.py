@@ -320,6 +320,7 @@ class CoST:
                 optimizer.zero_grad()
 
                 if self.attention:
+                    print("Data to device")
                     x_q = x_q.to(self.device)
                     x_k = x_k.to(self.device)
                 loss = self.cost(x_q, x_k)
