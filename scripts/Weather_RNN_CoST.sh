@@ -1,4 +1,4 @@
-alphas=(0.0001 0.00025 0.0005 0.001 0.0025)
+alphas=(0.0005)
 
 for alpha in "${alphas[@]}"; do
   for seed in $(seq 0 0); do

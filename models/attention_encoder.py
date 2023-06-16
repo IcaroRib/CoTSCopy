@@ -12,7 +12,7 @@ import numpy as np
 from .encoder import BandedFourierLayer, generate_binomial_mask, generate_continuous_mask
 
 
-class DilatedRecurrentEncoder(nn.Module):
+class DilatedAttentionEncoder(nn.Module):
     def __init__(self, input_size, output_size, architecture):
         super().__init__()
         self.net = architecture(input_size, output_size, num_layers=2)
@@ -22,11 +22,9 @@ class DilatedRecurrentEncoder(nn.Module):
         return out
 
 
-class CoSTRecurrentEncoder(nn.Module):
+class CoSTTransformerEncoder(nn.Module):
     ARCHITECTURES = {
-        "rnn": nn.RNN,
-        "lstm": nn.LSTM,
-        "gru": nn.GRU
+        "transformer": nn.TransformerEncoderLayer,
     }
 
     def __init__(self, input_dims, output_dims,
@@ -37,6 +35,8 @@ class CoSTRecurrentEncoder(nn.Module):
                  architecture="rnn"):
         super().__init__()
 
+        self.transformer_layer = nn.TransformerEncoderLayer(d_model, nhead, dim_feedforward, dropout)
+
         component_dims = output_dims // 2
 
         self.input_dims = input_dims
@@ -45,16 +45,16 @@ class CoSTRecurrentEncoder(nn.Module):
         self.hidden_dims = hidden_dims
         self.mask_mode = mask_mode
         self.input_fc = nn.Linear(input_dims, hidden_dims)
-        self.architecture = CoSTRecurrentEncoder.ARCHITECTURES[architecture]
+        self.architecture = CoSTTransformerEncoder.ARCHITECTURES[architecture]
 
-        self.feature_extractor = DilatedRecurrentEncoder(hidden_dims, output_dims, self.architecture)
+        self.feature_extractor = DilatedAttentionEncoder(hidden_dims, output_dims, self.architecture)
 
         self.repr_dropout = nn.Dropout(p=0.1)
 
         self.kernels = kernels
 
         self.tfd = nn.ModuleList(
-            [self.architecture(output_dims, component_dims, 1, False) for k in range(3)]
+            [self.architecture(output_dims, component_dims, 1, False) for k in kernels]
         )
 
         self.sfd = nn.ModuleList(
