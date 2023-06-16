@@ -13,12 +13,12 @@ from .encoder import BandedFourierLayer, generate_binomial_mask, generate_contin
 
 
 class DilatedAttentionEncoder(nn.Module):
-    def __init__(self, input_size, output_size, architecture):
+    def __init__(self, input_size, nheads, output_size):
         super().__init__()
-        self.net = architecture(input_size, output_size, num_layers=2)
+        self.net = nn.TransformerEncoderLayer(input_size, nheads, output_size)
 
     def forward(self, x):
-        out, states = self.net(x)
+        out = self.net(x)
         return out
 
 
@@ -28,11 +28,10 @@ class CoSTTransformerEncoder(nn.Module):
     }
 
     def __init__(self, input_dims, output_dims,
-                 kernels: List[int],
                  length: int,
-                 hidden_dims=64, depth=10,
-                 mask_mode='binomial',
-                 architecture="rnn"):
+                 hidden_dims=64,
+                 nheads=10,
+                 mask_mode='binomial'):
         super().__init__()
 
         self.transformer_layer = nn.TransformerEncoderLayer(d_model, nhead, dim_feedforward, dropout)
@@ -51,11 +50,7 @@ class CoSTTransformerEncoder(nn.Module):
 
         self.repr_dropout = nn.Dropout(p=0.1)
 
-        self.kernels = kernels
-
-        self.tfd = nn.ModuleList(
-            [self.architecture(output_dims, component_dims, 1, False) for k in kernels]
-        )
+        self.tfd = [nn.TransformerEncoderLayer(output_dims, nheads, component_dims)]
 
         self.sfd = nn.ModuleList(
             [BandedFourierLayer(output_dims, component_dims, b, 1, length=length) for b in range(1)]
@@ -100,7 +95,7 @@ class CoSTTransformerEncoder(nn.Module):
         # print('X before LSTM')
         # print(x.shape)
         for mod in self.tfd:
-            out, _ = mod(x)  # b t d
+            out = mod(x)  # b t d
             trend.append(out)
         trend = reduce(
             rearrange(trend, 'list b t d -> list b t d'),

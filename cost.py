@@ -12,6 +12,7 @@ from einops import rearrange, repeat, reduce
 
 from models.encoder import CoSTEncoder
 from models.recurrent_encoder import CoSTRecurrentEncoder
+from models.attention_encoder import CoSTTransformerEncoder
 from utils import take_per_row, split_with_nan, centerize_vary_length_series, torch_pad_nan
 
 
@@ -235,7 +236,14 @@ class CoST:
                 hidden_dims=hidden_dims, depth=depth,
                 architecture=recurrent
             ).to(self.device)
-
+        elif attention:
+            self.net = CoSTTransformerEncoder(
+                input_dims=input_dims, output_dims=output_dims,
+                kernels=kernels,
+                length=max_train_length,
+                hidden_dims=hidden_dims,
+                nheads=depth
+            ).to(self.device)
         else:
             self.net = CoSTEncoder(
                 input_dims=input_dims, output_dims=output_dims,
