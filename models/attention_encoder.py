@@ -34,8 +34,6 @@ class CoSTTransformerEncoder(nn.Module):
                  mask_mode='binomial'):
         super().__init__()
 
-        self.transformer_layer = nn.TransformerEncoderLayer(d_model, nhead, dim_feedforward, dropout)
-
         component_dims = output_dims // 2
 
         self.input_dims = input_dims
