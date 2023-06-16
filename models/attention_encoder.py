@@ -93,6 +93,7 @@ class CoSTTransformerEncoder(nn.Module):
         for mod in self.tfd:
             mod_gpu = mod.to(x.device)
             out = mod_gpu(x)  # b t d
+            print(f"Out shape: {out.shape}")
             trend.append(out)
         trend = reduce(
             rearrange(trend, 'list b t d -> list b t d'),

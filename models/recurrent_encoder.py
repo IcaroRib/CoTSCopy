@@ -101,6 +101,7 @@ class CoSTRecurrentEncoder(nn.Module):
         # print(x.shape)
         for mod in self.tfd:
             out, _ = mod(x)  # b t d
+            print(f"Out shape: {out.shape}")
             trend.append(out)
         trend = reduce(
             rearrange(trend, 'list b t d -> list b t d'),
@@ -108,7 +109,7 @@ class CoSTRecurrentEncoder(nn.Module):
         )
 
         season = []
-        # print(f"X shape before season desintangler: {x.shape}" )
+        print(f"X shape before season desintangler: {x.shape}" )
         for mod in self.sfd:
             out = mod(x)  # b t d
             season.append(out)
