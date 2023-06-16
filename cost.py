@@ -239,8 +239,8 @@ class CoST:
             ).to(self.device)
         elif attention:
             self.net = CoSTTransformerEncoder(
-                input_dims=input_dims, output_dims=output_dims,
-                kernels=kernels,
+                input_dims=input_dims,
+                output_dims=output_dims,
                 length=max_train_length,
                 hidden_dims=hidden_dims,
                 nheads=depth
