@@ -62,7 +62,7 @@ class CoSTRecurrentEncoder(nn.Module):
         )
 
     def forward(self, x, tcn_output=False, mask='all_true'):  # x: B x T x input_dims
-        # print(x.shape) #B x T x input_dims
+        print(x.shape) #B x T x input_dims
         nan_mask = ~x.isnan().any(axis=-1)
         x[~nan_mask] = 0
         x = self.input_fc(x)  # B x T x Ch
@@ -97,8 +97,8 @@ class CoSTRecurrentEncoder(nn.Module):
             return x.transpose(1, 2)
 
         trend = []
-        # print('X before LSTM')
-        # print(x.shape)
+        print('X before LSTM')
+        print(x.shape)
         for mod in self.tfd:
             out, _ = mod(x)  # b t d
             print(f"Out shape: {out.shape}")
