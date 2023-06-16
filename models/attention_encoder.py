@@ -44,8 +44,6 @@ class CoSTTransformerEncoder(nn.Module):
         self.mask_mode = mask_mode
         self.input_fc = nn.Linear(input_dims, hidden_dims)
 
-        self.feature_extractor = DilatedAttentionEncoder(hidden_dims, nheads, output_dims)
-
         self.repr_dropout = nn.Dropout(p=0.1)
 
         self.tfd = [nn.TransformerEncoderLayer(hidden_dims, nheads, component_dims) for k in range(5)]
@@ -82,18 +80,11 @@ class CoSTTransformerEncoder(nn.Module):
         mask &= nan_mask
         x[~mask] = 0
 
-        # conv encoder
-        # x = x.transpose(1, 2)  # B x Ch x T
-        x = self.feature_extractor(x)  # B x Co x T
-
-        if tcn_output:
-            return x.transpose(1, 2)
-
         trend = []
+        print(f'X Shape: {x.shape}')
         for mod in self.tfd:
             mod_gpu = mod.to(x.device)
             out = mod_gpu(x)  # b t d
-            print(f"Out shape: {out.shape}")
             trend.append(out)
         trend = reduce(
             rearrange(trend, 'list b t d -> list b t d'),
