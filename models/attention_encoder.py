@@ -82,9 +82,6 @@ class CoSTTransformerEncoder(nn.Module):
         mask &= nan_mask
         x[~mask] = 0
 
-        print('X before feature_extractor')
-        print(x.shape)
-
         # conv encoder
         # x = x.transpose(1, 2)  # B x Ch x T
         x = self.feature_extractor(x)  # B x Co x T
