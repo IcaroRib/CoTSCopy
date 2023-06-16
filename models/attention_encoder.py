@@ -55,7 +55,7 @@ class CoSTTransformerEncoder(nn.Module):
         )
 
     def forward(self, x, tcn_output=False, mask='all_true'):  # x: B x T x input_dims
-        # print(x.shape) #B x T x input_dims
+
         nan_mask = ~x.isnan().any(axis=-1)
         x[~nan_mask] = 0
         x = self.input_fc(x)  # B x T x Ch
@@ -82,16 +82,22 @@ class CoSTTransformerEncoder(nn.Module):
         mask &= nan_mask
         x[~mask] = 0
 
+        print('X before feature_extractor')
+        print(x.shape)
+
         # conv encoder
         # x = x.transpose(1, 2)  # B x Ch x T
         x = self.feature_extractor(x)  # B x Co x T
+
+        print('X after feature_extractor')
+        print(x.shape)
 
         if tcn_output:
             return x.transpose(1, 2)
 
         trend = []
-        # print('X before LSTM')
-        # print(x.shape)
+        print('X before Transformer')
+        print(x.shape)
         for mod in self.tfd:
             out = mod(x)  # b t d
             trend.append(out)
