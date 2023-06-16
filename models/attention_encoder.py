@@ -94,6 +94,8 @@ class CoSTTransformerEncoder(nn.Module):
             print(x.device)
             device = next(self.parameters()).device
             print(device)
+            device = next(mod.parameters()).device
+            print(device)
             out = mod(x)  # b t d
             trend.append(out)
         trend = reduce(
