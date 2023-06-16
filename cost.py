@@ -243,7 +243,7 @@ class CoST:
                 output_dims=output_dims,
                 length=max_train_length,
                 hidden_dims=hidden_dims,
-                nheads=depth
+                nheads=8
             ).to(self.device)
         else:
             self.net = CoSTEncoder(

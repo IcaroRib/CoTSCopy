@@ -27,10 +27,11 @@ class CoSTTransformerEncoder(nn.Module):
         "transformer": nn.TransformerEncoderLayer,
     }
 
-    def __init__(self, input_dims, output_dims,
+    def __init__(self, input_dims,
+                 output_dims,
                  length: int,
                  hidden_dims=64,
-                 nheads=10,
+                 nheads=8,
                  mask_mode='binomial'):
         super().__init__()
 
