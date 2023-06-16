@@ -48,7 +48,7 @@ class CoSTTransformerEncoder(nn.Module):
 
         self.repr_dropout = nn.Dropout(p=0.1)
 
-        self.tfd = [nn.TransformerEncoderLayer(output_dims, nheads, component_dims)]
+        self.tfd = [nn.TransformerEncoderLayer(component_dims, nheads, component_dims)]
 
         self.sfd = nn.ModuleList(
             [BandedFourierLayer(output_dims, component_dims, b, 1, length=length) for b in range(1)]
