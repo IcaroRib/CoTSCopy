@@ -96,7 +96,8 @@ class CoSTTransformerEncoder(nn.Module):
             print(device)
             device = next(mod.parameters()).device
             print(device)
-            out = mod(x)  # b t d
+            mod_gpu = mod.to_device(x.device)
+            out = mod_gpu(x)  # b t d
             trend.append(out)
         trend = reduce(
             rearrange(trend, 'list b t d -> list b t d'),
