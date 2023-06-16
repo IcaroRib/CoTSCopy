@@ -91,12 +91,7 @@ class CoSTTransformerEncoder(nn.Module):
 
         trend = []
         for mod in self.tfd:
-            print(x.device)
-            device = next(self.parameters()).device
-            print(device)
-            device = next(mod.parameters()).device
-            print(device)
-            mod_gpu = mod.to_device(x.device)
+            mod_gpu = mod.to(x.device)
             out = mod_gpu(x)  # b t d
             trend.append(out)
         trend = reduce(
