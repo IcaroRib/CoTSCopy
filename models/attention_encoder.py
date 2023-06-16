@@ -43,7 +43,7 @@ class CoSTTransformerEncoder(nn.Module):
         self.mask_mode = mask_mode
         self.input_fc = nn.Linear(input_dims, hidden_dims)
 
-        self.feature_extractor = DilatedAttentionEncoder(hidden_dims, output_dims, self.architecture)
+        self.feature_extractor = DilatedAttentionEncoder(hidden_dims, nheads, output_dims)
 
         self.repr_dropout = nn.Dropout(p=0.1)
 
