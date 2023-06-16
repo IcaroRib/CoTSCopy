@@ -54,7 +54,7 @@ class CoSTRecurrentEncoder(nn.Module):
         self.kernels = kernels
 
         self.tfd = nn.ModuleList(
-            [self.architecture(output_dims, component_dims, 1, False) for k in kernels]
+            [self.architecture(component_dims, component_dims, 1, False) for k in kernels]
         )
 
         self.sfd = nn.ModuleList(
@@ -117,6 +117,4 @@ class CoSTRecurrentEncoder(nn.Module):
             season.append(out)
         season = season[0]
 
-        print("trend shape = ")
-        print(trend.shape)
         return trend, self.repr_dropout(season)
