@@ -83,7 +83,14 @@ if __name__ == '__main__':
         unit = 'epoch' if args.epochs is not None else 'iter'
         config[f'after_{unit}_callback'] = save_checkpoint_callback(args.save_every, unit)
 
-    run_dir = f"training/{args.dataset}/{name_with_datetime(args.run_name, args.alpha)}"
+
+    file_prefix = "conv"
+    if args.recurrent:
+        file_prefix = args.recurrent
+    elif args.attention:
+        file_prefix = args.attention
+
+    run_dir = f"training/{args.dataset}/{name_with_datetime(args.run_name, args.alpha, file_prefix)}"
 
     os.makedirs(run_dir, exist_ok=True)
     

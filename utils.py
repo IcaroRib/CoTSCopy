@@ -72,9 +72,9 @@ def data_dropout(arr, p):
     res[mask.reshape(B, T)] = np.nan
     return res
 
-def name_with_datetime(prefix='default', alpha=""):
+def name_with_datetime(prefix='default', alpha="", file_prefix="conv"):
     now = datetime.now()
-    return prefix + "_" + str(alpha) + '_' + now.strftime("%Y%m%d_%H%M%S")
+    return prefix + "_" + file_prefix + "_" + str(alpha) + '_' + now.strftime("%Y%m%d_%H%M%S")
 
 def init_dl_program(
     device_name,
