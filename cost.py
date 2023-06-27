@@ -303,55 +303,16 @@ class CoST:
 
             if n_epochs is not None and self.n_epochs >= n_epochs:
                 break
-            
-            cum_loss = 0
-            n_epoch_iters = 0
-            
-            interrupted = False
-            for i in range(len(train_loader)):
-                batch = train_loader[i]
-                if n_iters is not None and self.n_iters >= n_iters:
-                    interrupted = True
-                    break
 
-                x_k, x_q = self.extract_data(batch)
-                optimizer.zero_grad()
-                loss = self.cost(x_q, x_k)
-                loss.backward()
-                optimizer.step()
+            cum_loss, interrupted = self.train_batch(n_iters, optimizer, train_loader, verbose)
 
-                cum_loss += loss.item()
-                n_epoch_iters += 1
-                
-                self.n_iters += 1
-                
-                if self.after_iter_callback is not None:
-                    self.after_iter_callback(self, loss.item())
-
-                if n_iters is not None:
-                    adjust_learning_rate(optimizer, self.lr, self.n_iters, n_iters)
-            
+            loss_log.append(cum_loss)
             if interrupted:
                 break
-            
-            cum_loss /= n_epoch_iters
-            loss_log.append(cum_loss)
-
-            if verbose:
-                print(f"Epoch #{self.n_epochs}: loss={cum_loss}")
 
             if evaluation:
-                if i < len(val_loader):
-                    print(f"Starting Evaluation {i}")
-                    val_batch = val_loader[i]
-                    x_val_k, x_val_q = self.extract_data(val_batch)
-                    optimizer.zero_grad()
-                    loss = self.cost(x_val_k, x_val_q)
-                    loss.backward()
-                    optimizer.step()
-                    loss_ = loss.item
-                    eval_loss.append(loss_)
-                    print(f"Evaluation - Epoch #{self.n_epochs}: loss={loss_}")
+                eval_loss, _ = self.train_batch(n_iters, optimizer, val_loader, verbose)
+            loss_log.append(eval_loss)
 
             self.n_epochs += 1
 
@@ -365,6 +326,40 @@ class CoST:
             cont += 1
 
         return loss_log, eval_loss
+
+    def train_batch(self, n_iters, optimizer, train_loader, verbose):
+
+        cum_loss = 0
+        interrupted = False
+        n_epoch_iters = 0
+
+        for batch in train_loader:
+            if n_iters is not None and self.n_iters >= n_iters:
+                interrupted = True
+                break
+
+            x_k, x_q = self.extract_data(batch)
+            optimizer.zero_grad()
+            loss = self.cost(x_q, x_k)
+            loss.backward()
+            optimizer.step()
+
+            cum_loss += loss.item()
+
+            n_epoch_iters += 1
+            self.n_iters += 1
+
+            if self.after_iter_callback is not None:
+                self.after_iter_callback(self, loss.item())
+
+            if n_iters is not None:
+                adjust_learning_rate(optimizer, self.lr, self.n_iters, n_iters)
+
+        cum_loss /= n_epoch_iters
+
+        if verbose:
+            print(f"Epoch #{self.n_epochs}: loss={cum_loss}")
+        return cum_loss, interrupted
 
     def prepare_data(self, train_data):
 
