@@ -293,11 +293,12 @@ class CoST:
         
         loss_log = []
         eval_loss = []
+        cont = 0
         evaluation = False
         
         while True:
 
-            if n_epochs % 10 == 0:
+            if cont % 10 == 0:
                 evaluation = True
 
             if n_epochs is not None and self.n_epochs >= n_epochs:
@@ -361,6 +362,7 @@ class CoST:
                 adjust_learning_rate(optimizer, self.lr, self.n_epochs, n_epochs)
 
             evaluation = False
+            cont += 1
 
         return loss_log, eval_loss
 
