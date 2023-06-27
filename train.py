@@ -56,19 +56,22 @@ if __name__ == '__main__':
         task_type = 'forecasting'
         data, train_slice, valid_slice, test_slice, scaler, pred_lens, n_covariate_cols = datautils.load_forecast_csv(args.dataset)
         train_data = data[:, train_slice]
+        test_data = data[:, test_slice]
     elif args.archive == 'forecast_csv_univar':
         task_type = 'forecasting'
         data, train_slice, valid_slice, test_slice, scaler, pred_lens, n_covariate_cols = datautils.load_forecast_csv(args.dataset, univar=True)
         train_data = data[:, train_slice]
+        test_data = data[:, test_slice]
     elif args.archive == 'forecast_npy':
         task_type = 'forecasting'
         data, train_slice, valid_slice, test_slice, scaler, pred_lens, n_covariate_cols = datautils.load_forecast_npy(args.dataset)
         train_data = data[:, train_slice]
+        test_data = data[:, test_slice]
     elif args.archive == 'forecast_npy_univar':
         task_type = 'forecasting'
         data, train_slice, valid_slice, test_slice, scaler, pred_lens, n_covariate_cols = datautils.load_forecast_npy(args.dataset, univar=True)
         train_data = data[:, train_slice]
-        val_data = data[:, valid_slice]
+        test_data = data[:, test_slice]
     else:
         raise ValueError(f"Archive type {args.archive} is not supported.")
 
@@ -108,7 +111,7 @@ if __name__ == '__main__':
 
     loss_log, eval_loss = model.fit(
         train_data,
-        val_data, 
+        test_data, 
         n_epochs=args.epochs,
         n_iters=args.iters,
         verbose=True
