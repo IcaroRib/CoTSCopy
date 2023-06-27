@@ -294,7 +294,6 @@ class CoST:
         loss_log = []
         eval_loss = []
         cont = 0
-        evaluation = False
         
         while True:
             if n_epochs is not None and self.n_epochs >= n_epochs:
@@ -306,7 +305,7 @@ class CoST:
             if interrupted:
                 break
 
-            if cont % 10 == 0:
+            if cont % 5 == 0:
                 print("Starting Evaluation")
                 eval_loss, _ = self.train_batch(n_iters, optimizer, val_loader, verbose)
             loss_log.append(eval_loss)
@@ -326,7 +325,7 @@ class CoST:
 
         cum_loss = 0
         interrupted = False
-        n_epoch_iters = 0
+        n_epoch_iters = 1
 
         for batch in train_loader:
             if n_iters is not None and self.n_iters >= n_iters:
@@ -350,10 +349,11 @@ class CoST:
             if n_iters is not None:
                 adjust_learning_rate(optimizer, self.lr, self.n_iters, n_iters)
 
-        cum_loss /= n_epoch_iters
+        if not interrupted:
+            cum_loss /= n_epoch_iters
 
-        if verbose:
-            print(f"Epoch #{self.n_epochs}: loss={cum_loss}")
+            if verbose:
+                print(f"Epoch #{self.n_epochs}: loss={cum_loss}")
         return cum_loss, interrupted
 
     def prepare_data(self, train_data):
