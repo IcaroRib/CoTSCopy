@@ -297,33 +297,28 @@ class CoST:
         evaluation = False
         
         while True:
-
-            if cont % 10 == 0:
-                evaluation = True
-
             if n_epochs is not None and self.n_epochs >= n_epochs:
                 break
 
             cum_loss, interrupted = self.train_batch(n_iters, optimizer, train_loader, verbose)
-
             loss_log.append(cum_loss)
+
             if interrupted:
                 break
 
-            if evaluation:
+            if cont % 10 == 0:
+                print("Starting Evaluation")
                 eval_loss, _ = self.train_batch(n_iters, optimizer, val_loader, verbose)
             loss_log.append(eval_loss)
 
             self.n_epochs += 1
+            cont += 1
 
             if self.after_epoch_callback is not None:
                 self.after_epoch_callback(self, cum_loss)
 
             if n_epochs is not None:
                 adjust_learning_rate(optimizer, self.lr, self.n_epochs, n_epochs)
-
-            evaluation = False
-            cont += 1
 
         return loss_log, eval_loss
 
