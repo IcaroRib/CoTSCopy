@@ -269,26 +269,22 @@ class CoST:
         self.n_epochs = 0
         self.n_iters = 0
 
-    def fit(self, train_data, n_epochs=None, n_iters=None, verbose=False):
+    def fit(self, train_data, val_data, n_epochs=None, n_iters=None, verbose=False):
         assert train_data.ndim == 3
 
         if n_iters is None and n_epochs is None:
             n_iters = 200 if train_data.size <= 100000 else 600
 
-        if self.max_train_length is not None:
-            sections = train_data.shape[1] // self.max_train_length
-            if sections >= 2:
-                train_data = np.concatenate(split_with_nan(train_data, sections, axis=1), axis=0)
-
-        temporal_missing = np.isnan(train_data).all(axis=-1).any(axis=0)
-        if temporal_missing[0] or temporal_missing[-1]:
-            train_data = centerize_vary_length_series(train_data)
-                
-        train_data = train_data[~np.isnan(train_data).all(axis=2).all(axis=1)]
+        train_data = self.prepare_data(train_data)
+        val_data = self.prepare_data(val_data)
 
         multiplier = 1 if train_data.shape[0] >= self.batch_size else math.ceil(self.batch_size / train_data.shape[0])
         train_dataset = PretrainDataset(torch.from_numpy(train_data).to(torch.float), sigma=0.5, multiplier=multiplier)
         train_loader = DataLoader(train_dataset, batch_size=min(self.batch_size, len(train_dataset)), shuffle=True, drop_last=True)
+
+        val_dataset = PretrainDataset(torch.from_numpy(train_data).to(torch.float), sigma=0.5, multiplier=multiplier)
+        val_loader = DataLoader(val_dataset, batch_size=min(self.batch_size, len(val_dataset)), shuffle=True,
+                                  drop_last=True)
 
         optimizer = torch.optim.SGD([p for p in self.cost.parameters() if p.requires_grad],
                                     lr=self.lr,
@@ -296,8 +292,14 @@ class CoST:
                                     weight_decay=1e-4)
         
         loss_log = []
+        eval_loss = []
+        evaluation = False
         
         while True:
+
+            if n_epochs % 10 == 0:
+                evaluation = True
+
             if n_epochs is not None and self.n_epochs >= n_epochs:
                 break
             
@@ -305,21 +307,15 @@ class CoST:
             n_epoch_iters = 0
             
             interrupted = False
-            for batch in train_loader:
+            for i in range(len(train_loader)):
+                batch = train_loader[i]
                 if n_iters is not None and self.n_iters >= n_iters:
                     interrupted = True
                     break
 
-                x_q, x_k = map(lambda x: x.to(self.device), batch)
-                if self.max_train_length is not None and x_q.size(1) > self.max_train_length:
-                    window_offset = np.random.randint(x_q.size(1) - self.max_train_length + 1)
-                    x_q = x_q[:, window_offset : window_offset + self.max_train_length]
-                    x_k = x_k[:, window_offset : window_offset + self.max_train_length]
-
+                x_k, x_q = self.extract_data(batch)
                 optimizer.zero_grad()
-
                 loss = self.cost(x_q, x_k)
-
                 loss.backward()
                 optimizer.step()
 
@@ -339,8 +335,23 @@ class CoST:
             
             cum_loss /= n_epoch_iters
             loss_log.append(cum_loss)
+
             if verbose:
                 print(f"Epoch #{self.n_epochs}: loss={cum_loss}")
+
+            if evaluation:
+                if i < len(val_loader):
+                    print(f"Starting Evaluation {i}")
+                    val_batch = val_loader[i]
+                    x_val_k, x_val_q = self.extract_data(val_batch)
+                    optimizer.zero_grad()
+                    loss = self.cost(x_val_k, x_val_q)
+                    loss.backward()
+                    optimizer.step()
+                    loss_ = loss.item
+                    eval_loss.append(loss_)
+                    print(f"Evaluation - Epoch #{self.n_epochs}: loss={loss_}")
+
             self.n_epochs += 1
 
             if self.after_epoch_callback is not None:
@@ -348,9 +359,34 @@ class CoST:
 
             if n_epochs is not None:
                 adjust_learning_rate(optimizer, self.lr, self.n_epochs, n_epochs)
-            
-        return loss_log
-    
+
+            evaluation = False
+
+        return loss_log, eval_loss
+
+    def prepare_data(self, train_data):
+
+        if self.max_train_length is not None:
+            sections = train_data.shape[1] // self.max_train_length
+            if sections >= 2:
+                train_data = np.concatenate(split_with_nan(train_data, sections, axis=1), axis=0)
+
+        temporal_missing = np.isnan(train_data).all(axis=-1).any(axis=0)
+
+        if temporal_missing[0] or temporal_missing[-1]:
+            train_data = centerize_vary_length_series(train_data)
+        train_data = train_data[~np.isnan(train_data).all(axis=2).all(axis=1)]
+
+        return train_data
+
+    def extract_data(self, batch):
+        x_q, x_k = map(lambda x: x.to(self.device), batch)
+        if self.max_train_length is not None and x_q.size(1) > self.max_train_length:
+            window_offset = np.random.randint(x_q.size(1) - self.max_train_length + 1)
+            x_q = x_q[:, window_offset: window_offset + self.max_train_length]
+            x_k = x_k[:, window_offset: window_offset + self.max_train_length]
+        return x_k, x_q
+
     def _eval_with_pooling(self, x, mask=None, slicing=None, encoding_window=None):
         out_t, out_s = self.net(x.to(self.device, non_blocking=True))  # l b t d
         out = torch.cat([out_t[:, -1], out_s[:, -1]], dim=-1)

@@ -68,6 +68,7 @@ if __name__ == '__main__':
         task_type = 'forecasting'
         data, train_slice, valid_slice, test_slice, scaler, pred_lens, n_covariate_cols = datautils.load_forecast_npy(args.dataset, univar=True)
         train_data = data[:, train_slice]
+        val_data = data[:, valid_slice]
     else:
         raise ValueError(f"Archive type {args.archive} is not supported.")
 
@@ -105,13 +106,16 @@ if __name__ == '__main__':
         **config
     )
 
-    loss_log = model.fit(
+    loss_log, eval_loss = model.fit(
         train_data,
+        val_data, 
         n_epochs=args.epochs,
         n_iters=args.iters,
         verbose=True
     )
     model.save(f'{run_dir}/model.pkl')
+    pkl_save(f'{run_dir}/train_loss.pkl', loss_log)
+    pkl_save(f'{run_dir}/eval_loss.pkl', eval_loss)
 
     t = time.time() - t
     print(f"\nTraining time: {datetime.timedelta(seconds=t)}\n")
