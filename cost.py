@@ -13,6 +13,7 @@ from einops import rearrange, repeat, reduce
 from models.encoder import CoSTEncoder
 from models.recurrent_encoder import CoSTRecurrentEncoder
 from models.attention_encoder import CoSTTransformerEncoder
+from models.tcn_encoder import  CoSTTCNEncoder
 from utils import take_per_row, split_with_nan, centerize_vary_length_series, torch_pad_nan
 
 
@@ -214,6 +215,7 @@ class CoST:
                  batch_size: int = 16,
                  recurrent: str = None,
                  attention: str = None,
+                 conv: str = None,
                  after_iter_callback: Union[Callable, None] = None,
                  after_epoch_callback: Union[Callable, None] = None):
 
@@ -245,12 +247,23 @@ class CoST:
                 hidden_dims=hidden_dims,
                 nheads=8
             ).to(self.device)
-        else:
-            self.net = CoSTEncoder(
-                input_dims=input_dims, output_dims=output_dims,
+        elif conv:
+            self.net = CoSTTCNEncoder(
+                input_dims=input_dims,
+                output_dims=output_dims,
                 kernels=kernels,
                 length=max_train_length,
-                hidden_dims=hidden_dims, depth=depth,
+                hidden_dims=hidden_dims,
+                depth=depth
+            ).to(self.device)
+        else:
+            self.net = CoSTEncoder(
+                input_dims=input_dims,
+                output_dims=output_dims,
+                kernels=kernels,
+                length=max_train_length,
+                hidden_dims=hidden_dims,
+                depth=depth,
             ).to(self.device)
 
         self.cost = CoSTModel(
@@ -292,7 +305,7 @@ class CoST:
                                     weight_decay=1e-4)
         
         loss_log = []
-        eval_loss = []
+        loss_eval_log = []
         cont = 0
         
         while True:
@@ -308,7 +321,7 @@ class CoST:
             if cont % 5 == 0:
                 print("Starting Evaluation")
                 eval_loss, _ = self.train_batch(n_iters, optimizer, val_loader, verbose)
-            loss_log.append(eval_loss)
+                loss_eval_log.append(eval_loss)
 
             self.n_epochs += 1
             cont += 1
@@ -319,7 +332,7 @@ class CoST:
             if n_epochs is not None:
                 adjust_learning_rate(optimizer, self.lr, self.n_epochs, n_epochs)
 
-        return loss_log, eval_loss
+        return loss_log, loss_eval_log
 
     def train_batch(self, n_iters, optimizer, train_loader, verbose):
 

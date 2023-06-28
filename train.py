@@ -41,6 +41,7 @@ if __name__ == '__main__':
     parser.add_argument('--eval', action="store_true", help='Whether to perform evaluation after training')
     parser.add_argument('--recurrent', type=str, default=None, help='Define a type of recurrent encoder. Options are rnn, lstm and gru')
     parser.add_argument('--attention', type=str, default=None, help='Define a type of attention mechanism. Options are transformer')
+    parser.add_argument('--conv', type=str, default=None, help='Define a type of convolutional mechanism. Options are tcn')
 
     parser.add_argument('--kernels', type=int, nargs='+', default=[1, 2, 4, 8, 16, 32, 64, 128], help='The kernel sizes used in the mixture of AR expert layers')
     parser.add_argument('--alpha', type=float, default=0.0005, help='Weighting hyperparameter for loss function')
@@ -93,6 +94,8 @@ if __name__ == '__main__':
         file_prefix = args.recurrent
     elif args.attention:
         file_prefix = args.attention
+    elif args.conv:
+        file_prefix = args.conv
 
     run_dir = f"training/{args.dataset}/{name_with_datetime(args.run_name, args.alpha, file_prefix)}"
 
